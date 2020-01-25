@@ -6,7 +6,7 @@ export default class Item extends Component {
     render() {
         const { name} = this.props.item;
         return (
-            <div className="itemStyle hover" >
+            <div className="itemStyle" >
                 <a>{name}</a>
             </div>
         )

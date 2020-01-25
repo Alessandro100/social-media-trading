@@ -5,5 +5,10 @@
     border-bottom: '1px #ff686d solid';
     text-align: center;
     display: flex;
-    width: '10px'
+    width: '100%'
 }
+
+a:hover{
+    background-color: darkgray;
+    width: '100%';
+    }

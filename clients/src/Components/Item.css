@@ -1,11 +1,10 @@
 .itemStyle{
     background-color: rgb(238, 237, 237);
     color: black;
-    padding: '10px';
+    padding: '1px';
     border-bottom: '1px #ff686d solid';
     text-align: left;
+    border: 1px solid #4CAF50;
+    width: '100%';
 }
 
-a:hover{
-background-color: darkgray;
-}
