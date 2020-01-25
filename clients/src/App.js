@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from './logo.svg';
 import axios from 'axios';
 import './App.css';
 
@@ -11,7 +10,7 @@ function App() {
   })
   return (
     <div className="App">
-      <h1>Hello Hoes</h1>
+      <h1>Hello Friends</h1>
     </div>
   );
 }
