@@ -2,6 +2,17 @@
 /* General */
 .App {
   text-align: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.App-Container {
+  display: flex;
+  justify-content: center;
+}
+
+.app-columns {
+  width: 33%;
 }
 
 /* Header */
@@ -37,4 +48,22 @@
 .Header-Username {
   padding: 18px 6px 18px 6px;
   margin-right: 24px;
+}
+
+/* Timeline */
+
+.Timeline {
+  width: 33%;
+  Height: 100%;
+  align-content: center;
+  background: grey;
+}
+
+/* Transactions */
+
+.transaction {
+  background-color: grey;
+  padding: 10px;
+  margin: 10px;
+  height: 100px;
 }
