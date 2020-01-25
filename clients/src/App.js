@@ -2,19 +2,57 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import './App.css';
 import Header from './Components/Header'
+import Timeline from './Components/Timeline'
+import Transaction from './Components/Transaction'
 
-function App() {
-  console.log("api tests")
-  axios.get(`http://127.0.0.1:5000/`).then(res => {
-        console.log("connection success")
-        console.log(res);
-  })
+class App extends Component {
 
-  return (
-    <div className="App">
-    <Header />
-    </div>
-  );
+  state = {
+    transactions: [
+      {
+        id: 1,
+        user: 'Arthur',
+        transactionType: 'bought',
+        amount: 5,
+        stock: 'MATLAB'
+      },
+      {
+        id: 2,
+        user: 'Nick',
+        transactionType: 'sold',
+        amount: 5,
+        stock: 'Apple'
+      },
+      {
+        id: 3,
+        user: 'Alessandro',
+        transactionType: 'bought',
+        amount: 500,
+        stock: 'Linux'
+      },
+    ]
+  }
+
+  render(){
+    return (
+      <>
+        <Header />
+        <div className="App">
+          <div className='App-Container'>
+            <div className='app-columns'>
+              {/* Left Components */}
+            </div>
+            <div className='app-columns'>
+              <Timeline transactions={this.state.transactions}/>
+            </div>
+            <div className='app-columns'>
+              {/* Right */}
+            </div>
+          </div>
+        </div>
+      </>
+    );
+  }
 }
 
 
