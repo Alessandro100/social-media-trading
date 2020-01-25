@@ -1,0 +1,9 @@
+.itemListStyle{
+    background-color: rgb(238, 237, 237);
+    color: black;
+    padding: '10px';
+    border-bottom: '1px #ff686d solid';
+    text-align: center;
+    display: flex;
+    width: '10px'
+}
