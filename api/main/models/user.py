@@ -1,23 +1,16 @@
 from neo4j import GraphDatabase
 from flask import Flask
 from flask_restful import reqparse, abort, Api, Resource
-
-from flask_restful import Resource, Api
 from py2neo import Graph, NodeMatcher
 from py2neo.data import Node, Relationship
 from flask_cors import CORS
 import json
 from neomodel import StructuredNode, StringProperty, RelationshipTo, RelationshipFrom, config
-#from app.main.model import user
-
-
-
 
 parser = reqparse.RequestParser()
 parser.add_argument('username')
 parser.add_argument('password')
 
-#class User(StructuredNode):
 class User(Resource):
     def get(self):
         args = parser.parse_args()
@@ -43,5 +36,5 @@ class UserNode(StructuredNode):
     img = StringProperty()
     bg_img = StringProperty()
     investor_score = StringProperty()
-    #positions = RelationshipTo('Position', 'OWNS')
-    #transactions = RelationshipTo('Transaction', 'MADE')
+    positions = RelationshipTo('Position', 'OWNS')
+    transactions = RelationshipTo('Transaction', 'MADE')
