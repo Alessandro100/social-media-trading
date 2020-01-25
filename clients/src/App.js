@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import './App.css';
+import Header from './Components/Header'
 
 function App() {
   console.log("api tests")
@@ -8,9 +9,10 @@ function App() {
         console.log("connection success")
         console.log(res);
   })
+
   return (
     <div className="App">
-      <h1>Hello Friends</h1>
+    <Header />
     </div>
   );
 }
