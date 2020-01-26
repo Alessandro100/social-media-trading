@@ -6,8 +6,8 @@ from py2neo.data import Node, Relationship
 from flask_cors import CORS
 import json
 from neomodel import StructuredNode, StringProperty, RelationshipTo, RelationshipFrom, config
-from .position import PositionNode
-from .transaction import TransactionNode
+#from .position import PositionNode
+#from .transaction import TransactionNode
 
 parser = reqparse.RequestParser()
 parser.add_argument('username')
@@ -39,6 +39,6 @@ class UserNode(StructuredNode):
     bg_img = StringProperty()
     access_token = StringProperty()#from alpaca
     investor_score = StringProperty()
-    positions = RelationshipTo('PositionNode', 'OWNS')
-    transactions = RelationshipTo('TransactionNode', 'MADE')
+    positions = RelationshipTo('.position.PositionNode', 'OWNS')
+    transactions = RelationshipTo('.transaction.TransactionNode', 'MADE')
     follows = RelationshipTo('UserNode', 'FOLLOWS')
