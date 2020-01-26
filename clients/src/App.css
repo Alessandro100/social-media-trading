@@ -15,6 +15,13 @@
   width: 33%;
 }
 
+.box {
+  background-color: grey;
+  padding: 10px;
+  margin: 10px;
+  height: 100px;
+}
+
 /* Header */
 .App-header {
   background-color: #1B4E8D;
@@ -59,11 +66,9 @@
   background: grey;
 }
 
-/* Transactions */
+/* Positions */
 
-.transaction {
-  background-color: grey;
-  padding: 10px;
-  margin: 10px;
-  height: 100px;
+.position-row {
+  display: flex;
+  justify-content: space-between;
 }

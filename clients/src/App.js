@@ -4,6 +4,7 @@ import './App.css';
 import Header from './Components/Header'
 import Timeline from './Components/Timeline'
 import Transaction from './Components/Transaction'
+import Positions from './Components/Positions'
 
 class App extends Component {
 
@@ -30,6 +31,29 @@ class App extends Component {
         amount: 500,
         stock: 'Linux'
       },
+    ],
+    positions: [
+      {
+        id: 1,
+        abv: 'AAPL',
+        name: 'Apple',
+        total: 1200,
+        profit: '+ $120 (5%)'
+      },
+      {
+        id: 2,
+        abv: 'GOOGL',
+        name: 'Google',
+        total: 5000,
+        profit: '+ $120 (5%)'
+      },
+      {
+        id: 3,
+        abv: 'MTLAB',
+        name: 'Matlab',
+        total: 1000,
+        profit: '+ $120 (5%)'
+      }
     ]
   }
 
@@ -40,7 +64,7 @@ class App extends Component {
         <div className="App">
           <div className='App-Container'>
             <div className='app-columns'>
-              {/* Left Components */}
+              <Positions positions={this.state.positions} />
             </div>
             <div className='app-columns'>
               <Timeline transactions={this.state.transactions}/>
