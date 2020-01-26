@@ -22,3 +22,19 @@
 .Header-Input {
   width: 300px;
 }
+
+.Header-icon {
+  height: 50px;
+  float: right;
+  margin-right: 25px;
+}
+
+.Header-Fill {
+  flex-grow: 1;
+  min-width: 10%;
+}
+
+.Header-Username {
+  padding: 18px 6px 18px 6px;
+  margin-right: 24px;
+}
