@@ -80,10 +80,10 @@ class App extends Component {
   render(){
     return (
       <>
-        <BrowserRouter history={this.state.history}>
+        <BrowserRouter>
           <Switch>
             <Route exact path='/' render={() => <HomePage state={this.state}/> } />
-            <Route exact path='/profile' component={ProfilePage} />
+            <Route exact path='/profile' render={() => <ProfilePage state={this.state}/> } />
           </Switch>
         </BrowserRouter>
       </>
