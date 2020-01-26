@@ -72,3 +72,42 @@
   display: flex;
   justify-content: space-between;
 }
+
+/* Profile */
+
+.profile-container {
+  display: flex;
+  width: 100%;
+}
+
+.profile-main {
+  width: 70%;
+  color: grey;
+  padding: 15px;
+}
+
+.profile-sidebar {
+  width: 30%;
+  color: grey;
+  padding: 15px;
+}
+
+.profile-background {
+  height: 200px;
+  width: 100%;
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+.profile-user {
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
+}
+
+.img-container {
+  position: relative;
+  top: 0;
+  left: 0;
+}
