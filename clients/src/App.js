@@ -3,6 +3,7 @@ import axios from 'axios';
 import './App.css';
 import Header from './Components/Header'
 import Timeline from './Components/Timeline'
+import ItemList from './Components/ItemList'
 import Transaction from './Components/Transaction'
 import Positions from './Components/Positions'
 
@@ -54,7 +55,26 @@ class App extends Component {
         total: 1000,
         profit: '+ $120 (5%)'
       }
-    ]
+    ],
+    followers: [{
+      id: 1,
+      name: 'Barf Thur',
+      img:'../Logos/art.png'
+     
+    },
+    {
+      id: 2,
+      name: 'Al Exandbro',
+      img:'../Logos/nick.png'
+      
+    },
+    {
+      id: 3,
+      name: 'Nick Blowsass',
+      img:'../Logos/nick.png'
+     
+    },
+  ]
   }
 
   render(){
@@ -71,12 +91,15 @@ class App extends Component {
             </div>
             <div className='app-columns'>
               {/* Right */}
+              <ItemList itemList={this.state.followers}/>
             </div>
+
           </div>
         </div>
       </>
     );
   }
 }
+
 
 export default App;
