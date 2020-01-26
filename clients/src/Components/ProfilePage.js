@@ -13,13 +13,13 @@ export class ProfilePage extends Component {
         return (
             <>
             <Header />
-                <div className='profile-container'>
-                    <div className='profile-main'>
+                <div className='page-container'>
+                    <div className='page-main'>
                         <ProfileHeader />
                         <Graph />
                         <Positions positions={positions} />
                     </div>
-                    <div className='profile-sidebar'>
+                    <div className='page-sidebar'>
                         sidebar
                     </div>
                 </div>

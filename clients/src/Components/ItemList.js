@@ -12,7 +12,7 @@ export default class ItemList extends Component {
 
         return (
             <div> 
-                <h3>Following</h3>
+                <h3>{this.props.header}</h3>
                 {this.props.itemList.map((item) => (
                     <div className="itemListStyle hover">
                         <Item key={item.id} item={item} />

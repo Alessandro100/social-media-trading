@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
-import { createBrowserHistory } from 'history';
 
 import './App.css';
 import HomePage from './Components/HomePage';
 import ProfilePage from './Components/ProfilePage';
+import StockInfoPage from './Components/StockInfoPage';
 
 class App extends Component {
 
@@ -84,6 +84,7 @@ class App extends Component {
           <Switch>
             <Route exact path='/' render={() => <HomePage state={this.state}/> } />
             <Route exact path='/profile' render={() => <ProfilePage state={this.state}/> } />
+            <Route exact path='/stockinfo' render={() => <StockInfoPage state={this.state} />} />
           </Switch>
         </BrowserRouter>
       </>
