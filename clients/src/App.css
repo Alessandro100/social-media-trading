@@ -71,6 +71,7 @@
 .position-row {
   display: flex;
   justify-content: space-between;
+  color: black;
 }
 
 /* Profile */
@@ -110,4 +111,10 @@
   position: relative;
   top: 0;
   left: 0;
+}
+
+.graph-container {
+  border: solid;
+  height: 450px;
+  width: 100%
 }
