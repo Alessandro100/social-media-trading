@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import Timeline from './Timeline'
-import ItemList from './ItemList'
+import ItemList from './Item/ItemList'
 import Transaction from './Transaction'
-import Positions from './Positions'
+import Positions from './Position/Positions'
 import Header from './Header'
 import { BrowserRouter, Route, Link, Router, Switch } from 'react-router-dom'
 

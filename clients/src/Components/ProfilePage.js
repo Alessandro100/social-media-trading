@@ -3,7 +3,7 @@ import Header from './Header'
 import '../App.css';
 import ProfileHeader from './ProfileHeader';
 import Graph from './Graph';
-import Positions from './Positions';
+import Positions from './Position/Positions';
 
 export class ProfilePage extends Component {
     render() {

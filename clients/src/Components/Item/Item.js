@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import propTypes from 'prop-types';
-import './Item.css';
-import aless from '../Logos/aless.png'
+import './item.css';
 
 export default class Item extends Component {
     render() {
@@ -12,8 +11,11 @@ export default class Item extends Component {
         console.log(name)
         console.log(img)
         return (
-            <div className="itemStyle" >
-               <a><img className="itemIMG" src='../Logos/aless.png' />  {name}</a>
+            <div className="item-style" >
+               <a>
+                   <img className="item-img" src='https://www.w3schools.com/w3images/avatar2.png' />
+                   {name}
+                </a>
             </div>
         )
     }
