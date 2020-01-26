@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import { createBrowserHistory } from 'history';
+
 import './App.css';
-import Header from './Components/Header'
-import Timeline from './Components/Timeline'
-import ItemList from './Components/ItemList'
-import Transaction from './Components/Transaction'
-import Positions from './Components/Positions'
+import HomePage from './Components/HomePage';
+import ProfilePage from './Components/ProfilePage';
 
 class App extends Component {
 
@@ -80,22 +80,12 @@ class App extends Component {
   render(){
     return (
       <>
-        <Header />
-        <div className="App">
-          <div className='App-Container'>
-            <div className='app-columns'>
-              <Positions positions={this.state.positions} />
-            </div>
-            <div className='app-columns'>
-              <Timeline transactions={this.state.transactions}/>
-            </div>
-            <div className='app-columns'>
-              {/* Right */}
-              <ItemList itemList={this.state.followers}/>
-            </div>
-
-          </div>
-        </div>
+        <BrowserRouter history={this.state.history}>
+          <Switch>
+            <Route exact path='/' render={() => <HomePage state={this.state}/> } />
+            <Route exact path='/profile' component={ProfilePage} />
+          </Switch>
+        </BrowserRouter>
       </>
     );
   }
