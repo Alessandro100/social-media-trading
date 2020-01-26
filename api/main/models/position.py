@@ -23,3 +23,6 @@ class PositionNode(StructuredNode):
     total_purchase_price = StringProperty()
     stock = RelationshipTo('Stock', 'POSITION STOCK')
     user = RelationshipFrom('User', 'OWNS')
+
+def createPosition():
+    print('hi')

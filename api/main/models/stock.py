@@ -6,6 +6,7 @@ from py2neo.data import Node, Relationship
 from flask_cors import CORS
 import json
 from neomodel import StructuredNode, StringProperty, RelationshipTo, RelationshipFrom, config
+import requests
 
 parser = reqparse.RequestParser()
 
@@ -20,4 +21,15 @@ class StockNode(StructuredNode):
     symbol = StringProperty(unique_index=True)
     sector = StringProperty()
     name = StringProperty()
-    positions = RelationshipFrom('Stock', 'POSITION STOCK')
+    positions = RelationshipTo('.position.PositionNode', 'POSITION STOCK')
+    transactions = RelationshipFrom('.transaction.TransactionNode', 'POSITION STOCK')
+
+def createStock(stock_symbol):
+    company_info = getCompany(stock_symbol)
+    stock = StockNode(symbol=stock_symbol, sector=company_info['industry'], name=company_info['companyName']).save()
+    return stock
+
+def getCompany(stock_symbol):
+    r = requests.get('https://sandbox.iexapis.com/stable/stock/'+stock_symbol+'/company?token=Tpk_6d7ce216f5fe43ddb3de9ef3259bb550')
+    company_info = r.json()
+    return company_info

@@ -6,6 +6,7 @@ from py2neo.data import Node, Relationship
 from flask_cors import CORS
 import json
 from neomodel import StructuredNode, StringProperty, RelationshipTo, RelationshipFrom, config
+from .stock import createStock, StockNode
 
 parser = reqparse.RequestParser()
 
@@ -23,5 +24,18 @@ class TransactionNode(StructuredNode):
     type = StringProperty()
     quantity = StringProperty()
     total_purchase_price = StringProperty()
-    positions = RelationshipFrom('Stock', 'POSITION STOCK')
-    user = RelationshipTo('User', 'MADE')
+    stock = RelationshipTo('StockNode', 'POSITION STOCK')
+    user = RelationshipFrom('.user.UserNode', 'MADE')
+
+
+def createTransaction(user_node, action, type, quantity, total_purchase_price, stock_symbol, created_at):
+    transaction = TransactionNode(date=created_at, action=action, status='processing', type=type, quantity=quantity).save()
+    stock = StockNode.nodes.first_or_none(symbol=stock_symbol)
+    if stock == None:
+        print("create STOCK CREATE")
+        stock = createStock(stock_symbol)
+
+    transaction.stock.connect(stock)
+    transaction.user.connect(user_node)
+
+    #get stock, if doesn't exist -> create
