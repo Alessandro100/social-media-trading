@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Header from './Header'
 import StockInfoGraph from './StockInfoGraph'
-import ItemList from './ItemList'
+import ItemList from './Item/ItemList'
 
 export class StockInfoPage extends Component {
     render() {
