@@ -3,6 +3,7 @@ import axios from 'axios';
 import './App.css';
 import Header from './Components/Header'
 import Timeline from './Components/Timeline'
+import ItemList from './Components/ItemList'
 import Transaction from './Components/Transaction'
 
 class App extends Component {
@@ -30,7 +31,26 @@ class App extends Component {
         amount: 500,
         stock: 'Linux'
       },
-    ]
+    ],
+    followers: [{
+      id: 1,
+      name: 'Barf Thur',
+      img:'../Logos/art.png'
+     
+    },
+    {
+      id: 2,
+      name: 'Al Exandbro',
+      img:'../Logos/nick.png'
+      
+    },
+    {
+      id: 3,
+      name: 'Nick Blowsass',
+      img:'../Logos/nick.png'
+     
+    },
+  ]
   }
 
   render(){
@@ -47,7 +67,9 @@ class App extends Component {
             </div>
             <div className='app-columns'>
               {/* Right */}
+              <ItemList itemList={this.state.followers}/>
             </div>
+
           </div>
         </div>
       </>

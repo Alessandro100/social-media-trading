@@ -1,10 +1,15 @@
 .itemStyle{
     background-color: rgb(238, 237, 237);
     color: black;
-    padding: '1px';
-    border-bottom: '1px #ff686d solid';
+    padding: '2px';
     text-align: left;
-    border: 1px solid #4CAF50;
     width: '100%';
 }
 
+.itemIMG{
+    float: left;
+    margin-right: 5px;
+    object-fit: scale-down;
+    width:'3px';
+    height: '3px';
+}
