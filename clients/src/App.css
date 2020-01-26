@@ -2,6 +2,24 @@
 /* General */
 .App {
   text-align: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.App-Container {
+  display: flex;
+  justify-content: center;
+}
+
+.app-columns {
+  width: 33%;
+}
+
+.box {
+  background-color: grey;
+  padding: 10px;
+  margin: 10px;
+  height: 100px;
 }
 
 /* Header */
@@ -37,4 +55,66 @@
 .Header-Username {
   padding: 18px 6px 18px 6px;
   margin-right: 24px;
+}
+
+/* Timeline */
+
+.Timeline {
+  width: 33%;
+  Height: 100%;
+  align-content: center;
+  background: grey;
+}
+
+/* Positions */
+
+.position-row {
+  display: flex;
+  justify-content: space-between;
+  color: black;
+}
+
+/* Profile */
+
+.profile-container {
+  display: flex;
+  width: 100%;
+}
+
+.profile-main {
+  width: 70%;
+  color: grey;
+  padding: 15px;
+}
+
+.profile-sidebar {
+  width: 30%;
+  color: grey;
+  padding: 15px;
+}
+
+.profile-background {
+  height: 200px;
+  width: 100%;
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+.profile-user {
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
+}
+
+.img-container {
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+.graph-container {
+  border: solid;
+  height: 450px;
+  width: 100%
 }
