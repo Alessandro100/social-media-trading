@@ -1,0 +1,14 @@
+.itemListStyle{
+    background-color: rgb(238, 237, 237);
+    color: black;
+    padding: '15px';
+    border-bottom: '5px #ff686d solid';
+    text-align: center;
+    box-sizing: border-box;
+    
+}
+
+a:hover{
+    background-color: darkgray;
+    display: block;
+    }
