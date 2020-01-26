@@ -19,9 +19,11 @@ def neomodel_list_to_json(neomodel_list):
 
 def format_neomodel_list_and_add_stock(neomdel):
     stock = neomodel_to_json(neomdel.stock.all()[0])
+    user = neomodel_to_json(neomdel.user.all()[0])
     json_string = json.dumps(neomdel.__properties__) 
     json_object = json.loads(json_string)
     json_object['stock'] = stock
+    json_object['username'] = user['username']
     return json_object
 
 def neomodel_to_json(neomdel):

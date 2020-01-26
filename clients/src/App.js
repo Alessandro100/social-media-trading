@@ -31,7 +31,10 @@ class App extends Component {
     this.getUserPositions = this.getUserPositions.bind(this);
     this.getUserTransactions = this.getUserTransactions.bind(this);
     this.addFollower = this.addFollower.bind(this);
+    this.getUserFeed = this.getUserFeed.bind(this);
   }
+
+  USERNAME = 'test';
 
   goToAlpaca() {
     console.log('hi')
@@ -40,7 +43,7 @@ class App extends Component {
   }
 
   registerUser() {
-    var username = 'alex_test'
+    var username = this.USERNAME
     var password = '1234'
     axios.post(`http://127.0.0.1:5000/user`, {username: username, password: password}).then(res => {
       console.log("token success")
@@ -51,7 +54,7 @@ class App extends Component {
   buyStock() {
     console.log("buy stock");
     var params ={
-      username: 'test',
+      username: this.USERNAME,
       symbol: 'msft',
       action: 'buy',
       quantity: '3'
@@ -70,8 +73,7 @@ class App extends Component {
     if(x && x['code']) {
       var code = x['code']
       console.log("AN ALPACA CODE EXISTS")
-      var username = 'test'
-      axios.post(`http://127.0.0.1:5000/alpaca-registration`, {username: username, code: code}).then(res => {
+      axios.post(`http://127.0.0.1:5000/alpaca-registration`, {username: this.USERNAME, code: code}).then(res => {
         console.log("token success")
         console.log(res);
       })
@@ -88,7 +90,7 @@ class App extends Component {
 
   getUserPositions() {
     console.log("calling position list: " + 'http://127.0.0.1:5000/position-list')
-    axios.get(`http://127.0.0.1:5000/position-list`, {params: { username: 'test'}}).then(res => {
+    axios.get(`http://127.0.0.1:5000/position-list`, {params: { username: this.USERNAME}}).then(res => {
           console.log("GET success")
           console.log(res);
           console.log(res.data);
@@ -97,7 +99,7 @@ class App extends Component {
 
   getUserTransactions() {
     console.log("calling position list: " + 'http://127.0.0.1:5000/transaction-list')
-    axios.get(`http://127.0.0.1:5000/transaction-list`, {params: { username: 'test'}}).then(res => {
+    axios.get(`http://127.0.0.1:5000/transaction-list`, {params: { username: this.USERNAME}}).then(res => {
           console.log("GET success")
           console.log(res);
           console.log(res.data);
@@ -105,10 +107,20 @@ class App extends Component {
   }
 
   addFollower() {
-    console.log("calling position list: " + 'http://127.0.0.1:5000/transaction-list')
-    axios.post(`http://127.0.0.1:5000/user`, {username: username, password: password}).then(res => {
+    console.log("calling position list: " + 'http://127.0.0.1:5000/follow')
+    axios.post(`http://127.0.0.1:5000/follow`, {username: this.USERNAME, username_to_follow: 'alex_test'}).then(res => {
       console.log("token success")
       console.log(res);
+    })
+  }
+
+  getUserFeed(){
+    console.log("calling position list: " + 'http://127.0.0.1:5000/feed')
+    //this.USERNAME
+    axios.get(`http://127.0.0.1:5000/feed`, {params: { username: 'test'}}).then(res => {
+          console.log("GET success")
+          console.log(res);
+          console.log(res.data);
     })
   }
 
@@ -124,6 +136,7 @@ class App extends Component {
         <button onClick={this.getUserPositions}>User Position Test</button>
         <button onClick={this.getUserTransactions}>User Transaction Test</button>
         <button onClick={this.addFollower}>AddFollower Test</button>
+        <button onClick={this.getUserFeed}>getUserFeed Test</button>
       </div>
     );
   }
