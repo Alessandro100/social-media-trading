@@ -118,3 +118,17 @@
   height: 450px;
   width: 100%
 }
+
+.leaderboard-container{
+  border: solid;
+  height: 150px;
+  width: 100%;
+  margin-top: 25px;
+  
+}
+.leaderboard-container h3{
+ text-align: center;
+}
+.leaderboard-container p{
+
+}

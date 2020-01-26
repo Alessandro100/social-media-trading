@@ -8,9 +8,6 @@ export default class Item extends Component {
         const {name} = this.props.item;
         const {img} = this.props.item;
 
-        console.log('name, img')
-        console.log(name)
-        console.log(img)
         return (
             <div className="itemStyle" >
                <a><img className="itemIMG" src='../Logos/aless.png' />  {name}</a>

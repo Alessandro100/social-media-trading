@@ -4,15 +4,17 @@ import '../App.css';
 import ProfileHeader from './ProfileHeader';
 import Graph from './Graph';
 import Positions from './Positions';
+import Sectors from './Sectors';
+import Ranking from './ranking';
 
 export class ProfilePage extends Component {
     render() {
-        const { transactions, positions, followers } = this.props.state
+        const { transactions, positions, followers, sectors, ranking } = this.props.state
         console.log('positions')
         console.log(positions)
         return (
             <>
-            <Header />
+                <Header />
                 <div className='profile-container'>
                     <div className='profile-main'>
                         <ProfileHeader />
@@ -21,6 +23,8 @@ export class ProfilePage extends Component {
                     </div>
                     <div className='profile-sidebar'>
                         sidebar
+                        <Sectors sectors={sectors} />
+                        <Ranking ranking = {ranking}/>
                     </div>
                 </div>
             </>

@@ -99,7 +99,12 @@ class App extends Component {
       color: '#6A2135'
 
     },
-    ]
+    ],
+    ranking: {
+      percentile: '66%',
+      weekRank: 7,
+
+    }
   }
 
   render() {
