@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import Timeline from './Timeline'
-import ItemList from './ItemList'
+import ItemList from './Item/ItemList'
 import Transaction from './Transaction'
-import Positions from './Positions'
+import Positions from './Position/Positions'
 import Header from './Header'
-import { BrowserRouter, Route, Link, Router, Switch } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 export class HomePage extends Component {
     render() {
@@ -21,7 +21,7 @@ export class HomePage extends Component {
                     </div>
                     <div className='app-columns'>
                         {/* Right */}
-                        <ItemList itemList={followers} />
+                        <ItemList itemList={followers} header='Following' />
                     </div>
                 </div>
             </div>

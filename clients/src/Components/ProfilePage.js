@@ -3,7 +3,7 @@ import Header from './Header'
 import '../App.css';
 import ProfileHeader from './ProfileHeader';
 import Graph from './Graph';
-import Positions from './Positions';
+import Positions from './Position/Positions';
 
 export class ProfilePage extends Component {
     render() {
@@ -13,13 +13,13 @@ export class ProfilePage extends Component {
         return (
             <>
             <Header />
-                <div className='profile-container'>
-                    <div className='profile-main'>
+                <div className='page-container'>
+                    <div className='page-main'>
                         <ProfileHeader />
                         <Graph />
                         <Positions positions={positions} />
                     </div>
-                    <div className='profile-sidebar'>
+                    <div className='page-sidebar'>
                         sidebar
                     </div>
                 </div>
