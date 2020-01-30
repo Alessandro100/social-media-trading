@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Header from './Header'
-import '../App.css';
+import '../App.scss';
 import ProfileHeader from './ProfileHeader';
 import Graph from './Graph';
 import Positions from './Position/Positions';

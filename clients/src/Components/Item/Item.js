@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import propTypes from 'prop-types';
-import './item.css';
+import './item.scss';
 
 export default class Item extends Component {
     render() {

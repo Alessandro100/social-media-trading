@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
-import './App.css';
+import './App.scss';
 import HomePage from './Components/HomePage';
 import ProfilePage from './Components/ProfilePage';
 import StockInfoPage from './Components/StockInfoPage';

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import propTypes from 'prop-types';
 import Item from './Item';
-import './item.css'
+import './item.scss'
 
 
 export default class ItemList extends Component {
