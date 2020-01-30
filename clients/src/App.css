@@ -1,38 +1,161 @@
+
+/* General */
 .App {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  height: 100%;
+}
+
+.App-Container {
+  display: flex;
+  justify-content: center;
+}
+
+.app-columns {
+  width: 33%;
+}
+
+.box {
+  background-color: grey;
+  padding: 10px;
+  margin: 10px;
+  height: 100px;
+}
+
+.page-container {
+  display: flex;
+  width: 100%;
+}
+
+.page-main {
+  width: 70%;
+  color: grey;
+  padding: 15px;
+}
+
+.page-sidebar {
+  width: 30%;
+  color: grey;
+  padding: 15px;
+}
+
+/* Header */
+.app-header {
+  background-color: #1B4E8D;
+  height: 60px;
+  padding: 10px 5px;
+  display: flex;
   color: white;
+  justify-content: flex-start;
+  align-items: center;
 }
 
-.App-link {
-  color: #61dafb;
+.header-logo {
+  padding: 18px;
+  margin-left: 25px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.header-logo img {
+  height: 50px;
+  border-radius: 5px;
+}
+
+.search-button {
+  padding: 8px;
+  border-radius: 5px;
+  background: rgba(255,255,255,0.4);
+  border: none;
+  color: white;
+  font-weight: bold;
+}
+
+.header-input {
+  width: 300px;
+  border: 0;
+  padding: 10px;
+  border-radius: 5px;
+  margin-right: 15px;
+}
+
+.Header-icon {
+  height: 50px;
+  float: right;
+  margin-right: 25px;
+}
+
+.Header-Fill {
+  flex-grow: 1;
+  min-width: 10%;
+}
+
+.Header-Username {
+  padding: 18px 6px 18px 6px;
+  margin-right: 24px;
+}
+
+/* Timeline */
+
+.Timeline {
+  width: 33%;
+  Height: 100%;
+  align-content: center;
+  background: grey;
+}
+
+/* Profile */
+
+.header-profile {
+  color: white;
+  display: flex;
+  align-items: center;
+}
+
+.header-profile img {
+  border-radius: 50%;
+  height: 50px;
+}
+
+.header-profile a {
+  color: white;
+  text-decoration: none;
+}
+
+.profile-background {
+  height: 200px;
+  width: 100%;
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+.profile-user {
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
+}
+
+.img-container {
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+.graph-container {
+  border: solid;
+  height: 450px;
+  width: 100%
+}
+
+.stockinfo-symbol {
+  height: 70px;
+}
+
+.stockinfo-container {
+  display: flex;
+  width: 100%;
+}
+
+.stockinfo-card {
+  width: 33%;
+  padding: 15px;
 }
