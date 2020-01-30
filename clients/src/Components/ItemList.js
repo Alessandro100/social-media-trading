@@ -1,23 +1,27 @@
 import React, { Component } from 'react'
 import propTypes from 'prop-types';
 import Item from './Item';
-import './item.css'
+import './ItemList.css'
 
 
 export default class ItemList extends Component {
+
+
+
     render() {
+
         return (
             <div> 
-                <h3>{this.props.header}</h3>
-                
-                    <div className="item-list-style hover">
-                        {this.props.itemList.map((item) => (
-                            <Item key={item.id} item={item} />
-                        ))}
+                <h3>Following</h3>
+                {this.props.itemList.map((item) => (
+                    <div className="itemListStyle hover">
+                        <Item key={item.id} item={item} />
                     </div>
                 
+                ))}
         </div>
         )
+
     }
 }
 

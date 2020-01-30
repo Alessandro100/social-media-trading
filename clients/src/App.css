@@ -22,59 +22,23 @@
   height: 100px;
 }
 
-.page-container {
-  display: flex;
-  width: 100%;
-}
-
-.page-main {
-  width: 70%;
-  color: grey;
-  padding: 15px;
-}
-
-.page-sidebar {
-  width: 30%;
-  color: grey;
-  padding: 15px;
-}
-
 /* Header */
-.app-header {
+.App-header {
   background-color: #1B4E8D;
   height: 60px;
-  padding: 10px 5px;
   display: flex;
   color: white;
   justify-content: flex-start;
   align-items: center;
 }
 
-.header-logo {
+.Header-Logo {
   padding: 18px;
   margin-left: 25px;
 }
 
-.header-logo img {
-  height: 50px;
-  border-radius: 5px;
-}
-
-.search-button {
-  padding: 8px;
-  border-radius: 5px;
-  background: rgba(255,255,255,0.4);
-  border: none;
-  color: white;
-  font-weight: bold;
-}
-
-.header-input {
+.Header-Input {
   width: 300px;
-  border: 0;
-  padding: 10px;
-  border-radius: 5px;
-  margin-right: 15px;
 }
 
 .Header-icon {
@@ -102,22 +66,31 @@
   background: grey;
 }
 
+/* Positions */
+
+.position-row {
+  display: flex;
+  justify-content: space-between;
+  color: black;
+}
+
 /* Profile */
 
-.header-profile {
-  color: white;
+.profile-container {
   display: flex;
-  align-items: center;
+  width: 100%;
 }
 
-.header-profile img {
-  border-radius: 50%;
-  height: 50px;
+.profile-main {
+  width: 70%;
+  color: grey;
+  padding: 15px;
 }
 
-.header-profile a {
-  color: white;
-  text-decoration: none;
+.profile-sidebar {
+  width: 30%;
+  color: grey;
+  padding: 15px;
 }
 
 .profile-background {
@@ -146,16 +119,16 @@
   width: 100%
 }
 
-.stockinfo-symbol {
-  height: 70px;
-}
-
-.stockinfo-container {
-  display: flex;
+.leaderboard-container{
+  border: solid;
+  height: 150px;
   width: 100%;
+  margin-top: 25px;
+  
 }
+.leaderboard-container h3{
+ text-align: center;
+}
+.leaderboard-container p{
 
-.stockinfo-card {
-  width: 33%;
-  padding: 15px;
 }

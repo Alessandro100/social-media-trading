@@ -7,17 +7,15 @@ import home from '../Logos/home.png'
 export class Header extends Component {
     render() {
         return(
-            <div className='app-header'>
-                <Link to='/' className='header-logo' com>
-                    <img src="https://99designs-blog.imgix.net/blog/wp-content/uploads/2018/10/attachment_80627598-e1539959007146.jpeg?auto=format&q=60&fit=max&w=930"/>
+            <div className='App-header'>
+                <Link to='/' className='Header-Logo' com>
+                    Logo
                 </Link>
-                <input className='header-input' placeholder='Which stock are you interested in?'></input>
-                <button className='search-button'>Search</button>
+                <input className='Header-Input' placeholder='Which stock are you interested in?'></input>
+                <button>Search</button>
                 <div className='Header-Fill' />
-                <div className='header-profile'>
-                    <img src='https://www.w3schools.com/w3images/avatar2.png' />
-                    <Link to='/profile' className='Header-Username'>John Doe</Link>
-                </div>
+                <img src={user} />
+                <Link to='/profile' className='Header-Username'>Arthur Gay</Link>
                 <img className='Header-icon' src={home} />
                 <img className='Header-icon' src={leaderboard} />
             </div>
