@@ -24,6 +24,12 @@ class StockNode(StructuredNode):
     positions = RelationshipTo('.position.PositionNode', 'POSITION STOCK')
     transactions = RelationshipFrom('.transaction.TransactionNode', 'POSITION STOCK')
 
+def get_or_create_stock(stock_symbol):
+    stock = StockNode.nodes.first_or_none(symbol=stock_symbol)
+    if stock == None:
+        stock = createStock(stock_symbol)
+    return stock
+
 def createStock(stock_symbol):
     company_info = getCompany(stock_symbol)
     stock = StockNode(symbol=stock_symbol, sector=company_info['industry'], name=company_info['companyName']).save()

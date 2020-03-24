@@ -25,3 +25,8 @@ class UserFollowRelation(Resource):
         user_to_follow = UserNode.nodes.first(username=args['username_to_follow'])
         user.follows.connect(user_to_follow)
         return {'status': 'successful follow'}, 201
+
+    def get(self):
+        args = parser.parse_args()
+        user = UserNode.nodes.first(username=args['username'])
+        return neomodel_list_to_json(user.follows)

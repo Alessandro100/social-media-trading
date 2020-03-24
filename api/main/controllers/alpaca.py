@@ -8,6 +8,8 @@ import json
 from neomodel import StructuredNode, StringProperty, RelationshipTo, RelationshipFrom, config, IntegerProperty, UniqueIdProperty
 from ..models.transaction import createTransaction
 from ..models.user import UserNode
+from ..models.position import add_alpaca_positions_to_user
+
 #from main.models.user import UserNode
 
 
@@ -81,3 +83,16 @@ class AlpacaTransaction(Resource):
         #Create Transaction object
         #Create Stock object if needed
         #Modify Position Object
+
+class AlpacaPositions(Resource):
+    def get(self):
+        args = parser.parse_args()
+        user = UserNode.nodes.first(username=args['username']) 
+        URL = 'https://paper-api.alpaca.markets/v2/positions'
+        HEADERS = {'Authorization': 'Bearer ' + user.access_token}
+        r = requests.get(url = URL, headers=HEADERS)
+        positions = r.json()
+        for position in user.positions:
+            position.delete()
+        add_alpaca_positions_to_user(user, positions)
+        return r.json()

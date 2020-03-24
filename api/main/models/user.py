@@ -6,6 +6,9 @@ def neomodel_to_json(neomdel):
     json_string = json.dumps(neomdel.__properties__) 
     return json.loads(json_string)
 
+def neomodel_list_to_json(neomodel_list):
+    return list(map(neomodel_to_json, neomodel_list))
+
 class UserNode(StructuredNode):
     username = StringProperty(unique_index=True)
     password = StringProperty()
