@@ -3,10 +3,15 @@ import React, { Component } from 'react'
 export class Transaction extends Component {
 
     render() {
-        const { user, transactionType, amount, stock } = this.props.transaction
+        const { transaction } = this.props
+        /**TODO: Style + format date */
+        
         return (
             <div className='box'>
-                <div>{user} {transactionType} {amount} stocks of {stock}</div>
+                <div>
+                    {transaction.username} {transaction.action} {transaction.quantity} stocks of {transaction.stock.name}
+                    <div>{new Date(transaction.date).toLocaleDateString("en-US")}</div>
+                </div>
             </div>
         )
     }

@@ -1,0 +1,16 @@
+.app-columns {
+    position: relative;
+    height: 100%;
+
+    .add-follower {
+        position: absolute;
+        bottom: 0;
+        height: 40px;
+        width: 90%;
+        right: 0;
+        border: none;
+        background: rgba(0,0,0,0.3);
+        font-size: 18px;
+    }
+}
+

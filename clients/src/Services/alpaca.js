@@ -25,6 +25,16 @@ const AlpacaService = {
                 reject(err);
             })
         })
+    },
+
+    getUserPositions: function(username) {
+        return new Promise((resolve, reject) =>{
+            APIService.get('alpaca-positions', {username: username}).then(res =>{
+                resolve(res['data']);
+            }, err =>{
+                reject(err);
+            })
+        });
     }
 };
 

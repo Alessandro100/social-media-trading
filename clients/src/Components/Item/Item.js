@@ -4,17 +4,15 @@ import './item.scss';
 
 export default class Item extends Component {
     render() {
-        const {name} = this.props.item;
-        const {img} = this.props.item;
+        const {item} = this.props;
 
-        console.log('name, img')
-        console.log(name)
-        console.log(img)
+        const img = item.img ? item.img : 'https://www.w3schools.com/w3images/avatar2.png';
+
         return (
             <div className="item-style" >
-               <a>
-                   <img className="item-img" src='https://www.w3schools.com/w3images/avatar2.png' />
-                   {name}
+               <a href={"/profile/"+item.username}>
+                   <img className="item-img" src={img} />
+                   {item.username}
                 </a>
             </div>
         )

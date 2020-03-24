@@ -6,17 +6,17 @@ import './item.scss'
 
 export default class ItemList extends Component {
     render() {
+        const {itemList, headerTitle} = this.props;
+
         return (
             <div> 
-                <h3>{this.props.header}</h3>
-                
+                <h3>{headerTitle}</h3>
                     <div className="item-list-style hover">
-                        {this.props.itemList.map((item) => (
+                        {itemList.map((item) => (
                             <Item key={item.id} item={item} />
                         ))}
-                    </div>
-                
-        </div>
+                    </div> 
+            </div>
         )
     }
 }

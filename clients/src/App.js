@@ -3,15 +3,14 @@ import axios from 'axios';
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
 import './App.scss';
-import HomePage from './Components/HomePage';
-import ProfilePage from './Components/ProfilePage';
+import HomePage from './Components/Home/HomePage';
+import ProfilePage from './Components/Profile/ProfilePage';
 import StockInfoPage from './Components/StockInfoPage';
 
 class App extends Component {
 
 
   goToAlpaca() {
-    console.log('hi')
     const url2 = 'https://app.alpaca.markets/oauth/authorize?response_type=code&client_id=606c58263dae63dd827a2b1395f76150&redirect_uri=http://localhost:3000/&scope=trading'
     window.location.href = url2;
   }
@@ -38,82 +37,14 @@ class App extends Component {
     return vars;
   }
 
-  state = {
-    transactions: [
-      {
-        id: 1,
-        user: 'Arthur',
-        transactionType: 'bought',
-        amount: 5,
-        stock: 'MATLAB'
-      },
-      {
-        id: 2,
-        user: 'Nick',
-        transactionType: 'sold',
-        amount: 5,
-        stock: 'Apple'
-      },
-      {
-        id: 3,
-        user: 'Alessandro',
-        transactionType: 'bought',
-        amount: 500,
-        stock: 'Linux'
-      },
-    ],
-    positions: [
-      {
-        id: 1,
-        abv: 'AAPL',
-        name: 'Apple',
-        total: 1200,
-        profit: '+ $120 (5%)'
-      },
-      {
-        id: 2,
-        abv: 'GOOGL',
-        name: 'Google',
-        total: 5000,
-        profit: '+ $120 (5%)'
-      },
-      {
-        id: 3,
-        abv: 'MTLAB',
-        name: 'Matlab',
-        total: 1000,
-        profit: '+ $120 (5%)'
-      }
-    ],
-    followers: [{
-      id: 1,
-      name: 'Barf Thur',
-      img:'../Logos/art.png'
-     
-    },
-    {
-      id: 2,
-      name: 'Al Exandbro',
-      img:'../Logos/nick.png'
-      
-    },
-    {
-      id: 3,
-      name: 'Nick Blowsass',
-      img:'../Logos/nick.png'
-     
-    },
-  ]
-  }
-
   render(){
     return (
       <>
         <BrowserRouter>
           <Switch>
-            <Route exact path='/' render={() => <HomePage state={this.state}/> } />
-            <Route exact path='/profile' render={() => <ProfilePage state={this.state}/> } />
-            <Route exact path='/stockinfo' render={() => <StockInfoPage state={this.state} />} />
+            <Route exact path='/' render={() => <HomePage/> } />
+            <Route exact path='/profile/:username' render={(props) => <ProfilePage username={props.match.params.username}/> } />
+            <Route exact path='/stockinfo/:stock_symbol' render={(props) => <StockInfoPage stockSymbol={props.match.params.stock_symbol} />} />
           </Switch>
         </BrowserRouter>
       </>
