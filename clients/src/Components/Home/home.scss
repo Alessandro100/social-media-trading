@@ -1,3 +1,10 @@
+.App-container {
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+}
+
 .app-columns {
     position: relative;
     height: 100%;
@@ -14,3 +21,51 @@
     }
 }
 
+.add-follower-modal  {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 400px;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    opacity: 100%;
+    color:black;
+    padding: 20px;
+    border-radius: 5px;
+    display: inline-flex;
+    flex-direction: column;
+
+    .add-follower-title {
+        text-align: center;
+    }
+
+    .add-follower-modal-body {
+        border-top: 1px solid lightgrey;
+        padding-top: 20px;
+    }
+
+    .cancel-button {
+        width: 100%;
+        background-color: #7daae3;
+        color: white;
+    }
+
+    .follower-search-holder {
+        padding-bottom: 20px;
+    }
+
+    .follower-search-btn {
+        background-color: lightgrey;
+        color: white;
+        font-weight: bold;
+    }
+
+    .follower-search {
+        width: 300px;
+        border: 0;
+        padding: 10px;
+        border-radius: 5px;
+        margin-right: 15px;
+        border: 0.3px grey solid;
+    }
+}
