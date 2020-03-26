@@ -13,6 +13,7 @@ export class ProfileHeader extends Component {
                 <div className='img-container'>
                     <img className='profile-background' src={bgImg} />
                     <img className='profile-user' src={img} />
+
                 </div>
                 <h1>{userInfo.username}</h1>
             </>

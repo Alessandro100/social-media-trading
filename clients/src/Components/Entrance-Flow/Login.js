@@ -20,7 +20,9 @@ class Login extends Component {
         if(localStorage.getItem('access_token') !== 'null') {
             console.log("going through")
             console.log(localStorage.getItem('access_token'));
-            this.logInAccessToken(localStorage.getItem('access_token'));
+            UserService.logInAccessToken(localStorage.getItem('access_token')).then(res =>{
+                this.setState({homeNavigateion: true})
+            })
         }
 
         const urlVar = this.getUrlVars();
@@ -67,13 +69,6 @@ class Login extends Component {
         window.location.href = alpacaUrl;
     }
 
-    logInAccessToken(access_token) {
-        UserService.loginAccessToken(access_token).then(user=>{
-            this.setState({homeNavigateion: true})
-        }, err =>{
-            localStorage.setItem('access_token', null);
-        })
-    }
 
     logInUsernamePassword = (event) => {
         event.preventDefault();

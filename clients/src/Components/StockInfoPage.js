@@ -5,6 +5,7 @@ import ItemList from './Item/ItemList'
 import StockService from '../Services/stock';
 import UserService from '../Services/user';
 import StockItemList from './Item/StockItemList';
+import BuySellStock from './BuySellStock/BuySellStock';
 
 export class StockInfoPage extends Component {
 
@@ -44,7 +45,12 @@ export class StockInfoPage extends Component {
                         <StockInfoGraph />
                     </div>
                     <div className='page-sidebar'>
-                        sidebar
+                        {/* probably should be a seperate componenet */}
+                        <BuySellStock stockSymbol='tsla' tradingPrice='400' cashAvailable='50000'/>
+                        <div>
+                            <h2>Portfolio</h2>
+                            <div>**Display stats of apple Portfolio here**</div>
+                        </div>
                     </div>
                 </div>
                 <div className='stockinfo-container'>

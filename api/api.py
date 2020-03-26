@@ -4,7 +4,7 @@ from flask_cors import CORS
 from neomodel import StructuredNode, StringProperty, RelationshipTo, RelationshipFrom, config
 from neo4j import GraphDatabase
 
-from main.models.position import Position, PositionList
+from main.controllers.position import Position, PositionList
 from main.models.stock import Stock
 from main.controllers.user import User, UserFollowRelation, AuthenticateUser, AuthenticateUserAccessToken
 from main.controllers.transaction import Transaction, TransactionList, TransactionFeed

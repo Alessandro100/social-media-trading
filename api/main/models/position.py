@@ -2,28 +2,10 @@ from neo4j import GraphDatabase
 from flask import Flask
 from flask_restful import reqparse, abort, Api, Resource
 import json
+import requests
 from neomodel import StructuredNode, StringProperty, RelationshipTo, RelationshipFrom, config, IntegerProperty, UniqueIdProperty
 from .user import UserNode
 from .stock import createStock, StockNode, get_or_create_stock
-
-parser = reqparse.RequestParser()
-parser.add_argument('username')
-
-class Position(Resource):
-    def get(self):
-        return {'status': 'good register path'}, 201
-
-    def post(self):
-        return {'status': 'good register path'}, 201
-
-class PositionList(Resource):
-    def get(self):
-        args = parser.parse_args()
-        positions = UserNode.nodes.first(username=args['username']).positions
-        if len(positions) > 0:
-            return neomodel_to_json(positions), 201
-        else:
-            return {'message': 'no positions'}, 201
 
 class PositionNode(StructuredNode):
     quantity = IntegerProperty()
@@ -35,6 +17,15 @@ class PositionNode(StructuredNode):
 def add_alpaca_positions_to_user(user, positions):
     for position in positions:
         create_position(user, position)
+
+def update_user_positions(user):
+    URL = 'https://paper-api.alpaca.markets/v2/positions'
+    HEADERS = {'Authorization': 'Bearer ' + user.access_token}
+    r = requests.get(url = URL, headers=HEADERS)
+    positions = r.json()
+    for position in user.positions:
+        position.delete()
+    add_alpaca_positions_to_user(user, positions)
 
 def neomodel_to_json(neomdel):
     json_string = json.dumps(neomdel.__properties__) 

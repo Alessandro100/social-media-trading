@@ -2,7 +2,7 @@ import APIService from "./api";
 
 const UserService = {
 
-    username: 'test',
+    username: null,
     img: 'https://pickaface.net/gallery/avatar/unr_sample_161118_2054_ynlrg.png',
     bgImg: 'https://www.designyourway.net/blog/wp-content/uploads/2018/06/Seamless-Polygon-Background.jpg',
     investorScore: 0,
@@ -38,6 +38,12 @@ const UserService = {
                 reject(err);
             })
         })
+    },
+
+    logout: function(){
+        const resetUser = {username: null, img: null, bgImg: null, investorScore: null, freeCash: null}
+        this.setUserInfo(this.registerUser);
+        localStorage.setItem('access_token', null)
     },
 
     loginAccessToken: function(access_token) {

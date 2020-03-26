@@ -8,7 +8,7 @@ import json
 from neomodel import StructuredNode, StringProperty, RelationshipTo, RelationshipFrom, config, IntegerProperty, UniqueIdProperty
 from ..models.transaction import createTransaction
 from ..models.user import UserNode, neomodel_to_json
-from ..models.position import add_alpaca_positions_to_user
+from ..models.position import *
 from ..models.alpaca import *
 
 #from main.models.user import UserNode
@@ -55,7 +55,7 @@ class AlpacaTransaction(Resource):
         args = parser.parse_args()
         #https://docs.alpaca.markets/api-documentation/api-v2/orders/
         user = UserNode.nodes.first(username=args['username'])
-        if True: #user.access_token:
+        if user.access_token is not None:
             URL = 'https://paper-api.alpaca.markets/v2/orders'
             PARAMS = {
                 'symbol': str(args['symbol']).upper(),
@@ -67,24 +67,13 @@ class AlpacaTransaction(Resource):
             HEADERS = {'Authorization': 'Bearer ' + user.access_token}
             r = requests.post(url = URL, json = PARAMS, headers=HEADERS)
             data = r.json()
-            if args['action'] == 'buy':
-                #create new position or extend position ###TODO -> weird fill issue
-                print("TODO")
-            else:
-                #update existing position ###TODO -> weird fill issue
-                print("TODO")
-            #create transaction
-            total_purchase_price = 420
+            total_purchase_price = 420#lmao wtf
             print(data)
+            update_user_positions(user)
             createTransaction(user, data['side'], data['type'], data['qty'], total_purchase_price, data['symbol'], data['created_at'])
             return data
         else:
-            print("NOT AUTHHORIZED")
             return {'error': 'Not Authorized'}, 403
-
-        #Create Transaction object
-        #Create Stock object if needed
-        #Modify Position Object
 
 class AlpacaPositions(Resource):
     def get(self):

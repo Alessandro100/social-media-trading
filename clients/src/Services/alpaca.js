@@ -14,13 +14,13 @@ const AlpacaService = {
     buySellStock: function(username, stockSymbol, action, quantity) {
         return new Promise((resolve, reject) =>{
             var params ={
-                username: this.USERNAME,
+                username: username,
                 symbol: stockSymbol,
                 action: action, //'buy' or 'sell'
                 quantity: quantity
             }
             APIService.post('alpaca-transaction', params).then(res =>{
-                resolve(res);
+                resolve(res['data']);
             }, err =>{
                 reject(err);
             })
