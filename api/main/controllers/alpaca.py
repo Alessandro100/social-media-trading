@@ -7,8 +7,9 @@ import requests
 import json
 from neomodel import StructuredNode, StringProperty, RelationshipTo, RelationshipFrom, config, IntegerProperty, UniqueIdProperty
 from ..models.transaction import createTransaction
-from ..models.user import UserNode
+from ..models.user import UserNode, neomodel_to_json
 from ..models.position import add_alpaca_positions_to_user
+from ..models.alpaca import *
 
 #from main.models.user import UserNode
 
@@ -31,18 +32,22 @@ class AlpacaRegistrationToken(Resource):
             'code':args['code'],
             'client_id': '606c58263dae63dd827a2b1395f76150',
             'client_secret': '76ae67c88adfdec78fa23d8b57e219a8210a34c4',
-            'redirect_uri': 'http://localhost:3000/'
+            'redirect_uri': 'http://localhost:3000/login/'
         }     
         URL = 'https://api.alpaca.markets/oauth/token'   
         r = requests.post(url = URL, params = PARAMS)
         data = r.json() 
+        access_token = data['access_token']
 
-        user = UserNode.nodes.first(username=args['username'])
-        user.access_token = data['access_token']
-        #update free cash as well
-        user.save()
-
-        return data
+        user = UserNode.nodes.first_or_none(access_token=access_token)
+        if user == None:
+            alpaca_info = get_alpaca_account(access_token)
+            user = UserNode(free_cash=alpaca_info['cash'], access_token=access_token, investor_score='0').save()
+        else:
+            user.access_token = access_token
+            user.save()
+    
+        return neomodel_to_json(user)
 
 
 class AlpacaTransaction(Resource):
@@ -52,9 +57,6 @@ class AlpacaTransaction(Resource):
         user = UserNode.nodes.first(username=args['username'])
         if True: #user.access_token:
             URL = 'https://paper-api.alpaca.markets/v2/orders'
-            print("HIHIHIHI")
-            print(args)
-            print(args['symbol'])
             PARAMS = {
                 'symbol': str(args['symbol']).upper(),
                 'qty': int(args['quantity']),

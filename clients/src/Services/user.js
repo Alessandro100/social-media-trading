@@ -9,6 +9,48 @@ const UserService = {
     freeCash: 0,
     positions: [],
 
+    updateUserInfo(params, access_token) {
+        params['access_token'] = access_token;
+        return new Promise((resolve, reject) =>{
+            APIService.put('user', params).then(user =>{
+                UserService.setUserInfo(user['data']);
+                resolve(user['data']);
+            }, err =>{
+                reject(err);
+            })
+        }) 
+    },
+
+    setUserInfo: function(user) {
+        UserService.username = user.username;
+        UserService.img = user.img;
+        UserService.bgImg = user.bgImg;
+        UserService.investorScore = user.investorScore;
+        UserService.freeCash = user.freeCash;
+    },
+
+    login: function(username, password) {
+        return new Promise((resolve, reject) =>{
+            APIService.get('authenticate', {username: username, password: password}).then(user =>{
+                UserService.setUserInfo(user['data']);
+                resolve(user['data']);
+            }, err =>{
+                reject(err);
+            })
+        })
+    },
+
+    loginAccessToken: function(access_token) {
+        return new Promise((resolve, reject) =>{
+            APIService.get('access-token-authenticate', {access_token: access_token}).then(user =>{
+                UserService.setUserInfo(user['data']);
+                resolve(user['data']);
+            }, err =>{
+                reject(err);
+            })
+        })
+    },
+
     registerUser: function(username, password) {
         return new Promise((resolve, reject) =>{
             APIService.post('user', {username: username, password: password}).then(res =>{

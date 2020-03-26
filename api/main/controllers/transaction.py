@@ -6,9 +6,6 @@ from neomodel import db
 parser = reqparse.RequestParser()
 parser.add_argument('username')
 
-#config.DATABASE_URL = 'bolt://neo4j:test@localhost:7687'
-uri = "bolt://localhost:7687"
-driver = GraphDatabase.driver(uri, auth=("neo4j", "test"))
 
 class Transaction(Resource):
     def get(self):

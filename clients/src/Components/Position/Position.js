@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import {Link} from 'react-router-dom';
 import './position.scss';
 
 export class Position extends Component {
@@ -9,14 +10,11 @@ export class Position extends Component {
         const currentValue = (Number(position.qty) * Number(position.current_price)).toFixed(2);
         const profit = currentValue - initialCost;
 
-        console.log("POSITNITNTINTITNITT");
-        console.log(position);
-
         return (
             <div className='box'>
                 <div className='position-row'>
                     <div>
-                        <a href={"/stockinfo/"+position.symbol}>{position.symbol}</a>
+                        <Link to={"/stockinfo/"+position.symbol}>{position.symbol}</Link>
                     </div>
                 </div>
                 <div className='position-row'>

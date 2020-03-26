@@ -12,7 +12,6 @@ def neomodel_list_to_json(neomodel_list):
 class UserNode(StructuredNode):
     username = StringProperty(unique_index=True)
     password = StringProperty()
-    password = StringProperty()
     free_cash = StringProperty()
     img = StringProperty()
     bg_img = StringProperty()

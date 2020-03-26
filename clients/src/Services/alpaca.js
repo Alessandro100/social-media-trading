@@ -1,10 +1,10 @@
 import APIService from "./api";
 
 const AlpacaService = {
-    registerAlpaca: function(username, code) {
+    registerAlpaca: function(code) {
         return new Promise((resolve, reject) =>{
-            APIService.post('alpaca-registration', {username: username, code: code}).then(res =>{
-                resolve(res);
+            APIService.post('alpaca-registration', {code: code}).then(res =>{
+                resolve(res['data']);
             }, err =>{
                 reject(err);
             })

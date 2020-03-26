@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import {Link} from 'react-router-dom';
 import propTypes from 'prop-types';
 import './item.scss';
 
@@ -10,10 +11,10 @@ export default class Item extends Component {
 
         return (
             <div className="item-style" >
-               <a href={"/profile/"+item.username}>
-                   <img className="item-img" src={img} />
-                   {item.username}
-                </a>
+                <Link to={"/profile/"+item.username}>
+                    <img className="item-img" src={img} />
+                    {item.username}
+                </Link>
             </div>
         )
     }

@@ -42,10 +42,7 @@ export class HomePage extends Component {
     }
 
     loadFollowers() {
-        console.log("FOLLOWERS - START");
         UserService.getUserFollowing().then(following =>{
-            console.log("FOLLOWERS");
-            console.log(following);
             this.setState({following: following});
         })
     }
@@ -69,9 +66,15 @@ export class HomePage extends Component {
                         {transactions && (
                             <Timeline transactions={transactions}/>
                         )}
+                        {(!transactions || transactions.length === 0) && (
+                            <h3>Empty Feed</h3>
+                        )}
                     </div>
                     <div className='app-columns'>
                         <ItemList itemList={following} headerTitle='Following' />
+                        {(!following || following.length === 0 )&& (
+                            <h3>Not following anyone</h3>
+                        )}
                         <button className='add-follower' onClick={this.addFollower()}>Add Follower</button>
                     </div>
                 </div>
