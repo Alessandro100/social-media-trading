@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
 import './item.scss'
 
 
@@ -15,9 +16,7 @@ import './item.scss'
                     <div className="item-list-style hover">
                         {stockList.map((stock) => (
                             <div className="item-style" >
-                            <a href={"/stockinfo/"+stock['symbol']}>
-                                {stock['name']}
-                            </a>
+                                <Link to={"/stockinfo/"+stock['symbol']}>{stock['name']}</Link>
                             </div>
                         ))}
                     </div>

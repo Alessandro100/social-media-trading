@@ -2,12 +2,60 @@ import APIService from "./api";
 
 const UserService = {
 
-    username: 'test',
+    username: null,
     img: 'https://pickaface.net/gallery/avatar/unr_sample_161118_2054_ynlrg.png',
     bgImg: 'https://www.designyourway.net/blog/wp-content/uploads/2018/06/Seamless-Polygon-Background.jpg',
     investorScore: 0,
     freeCash: 0,
     positions: [],
+
+    updateUserInfo(params, access_token) {
+        params['access_token'] = access_token;
+        return new Promise((resolve, reject) =>{
+            APIService.put('user', params).then(user =>{
+                UserService.setUserInfo(user['data']);
+                resolve(user['data']);
+            }, err =>{
+                reject(err);
+            })
+        }) 
+    },
+
+    setUserInfo: function(user) {
+        UserService.username = user.username;
+        UserService.img = user.img;
+        UserService.bgImg = user.bgImg;
+        UserService.investorScore = user.investorScore;
+        UserService.freeCash = user.freeCash;
+    },
+
+    login: function(username, password) {
+        return new Promise((resolve, reject) =>{
+            APIService.get('authenticate', {username: username, password: password}).then(user =>{
+                UserService.setUserInfo(user['data']);
+                resolve(user['data']);
+            }, err =>{
+                reject(err);
+            })
+        })
+    },
+
+    logout: function(){
+        const resetUser = {username: null, img: null, bgImg: null, investorScore: null, freeCash: null}
+        this.setUserInfo(this.registerUser);
+        localStorage.setItem('access_token', null)
+    },
+
+    loginAccessToken: function(access_token) {
+        return new Promise((resolve, reject) =>{
+            APIService.get('access-token-authenticate', {access_token: access_token}).then(user =>{
+                UserService.setUserInfo(user['data']);
+                resolve(user['data']);
+            }, err =>{
+                reject(err);
+            })
+        })
+    },
 
     registerUser: function(username, password) {
         return new Promise((resolve, reject) =>{

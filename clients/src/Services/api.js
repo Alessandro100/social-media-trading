@@ -25,7 +25,19 @@ const APIService = {
                 reject(err)
             })
         })
-    }
+    },
+
+    put: function(route, params) {
+        return new Promise((resolve, reject) =>{
+            const url = BASE_URL + route;
+            //print("PUT REQUEST: " + url)
+            axios.put(url, params).then(res => {
+                resolve(res)
+            }, err =>{
+                reject(err)
+            })
+        })
+    },
 };
 
 export default APIService;
