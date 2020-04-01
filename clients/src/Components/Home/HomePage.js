@@ -11,6 +11,7 @@ import PositionService from '../../Services/positions';
 import UserService from '../../Services/user';
 import AlpacaService from '../../Services/alpaca';
 import './home.scss';
+import { Card } from 'react-bootstrap'
 
 export class HomePage extends Component {
 
@@ -25,6 +26,7 @@ export class HomePage extends Component {
         this.loadPositions();
         this.loadFollowers();
         this.closeAddFollower = this.closeAddFollower.bind(this);
+        this.viewAddFollower = this.viewAddFollower.bind(this);
     }
 
     loadTransactions() {
@@ -50,15 +52,11 @@ export class HomePage extends Component {
         })
     }
 
-    addFollower() {
-       
-    }
-
     viewAddFollower = (object) => {
         this.setState({
             addFollowerMode: true
         })
-      }
+    }
 
     closeAddFollower = (object) => {
         this.setState({
@@ -75,22 +73,30 @@ export class HomePage extends Component {
                 <Header />
                 <div className='App-Container'>
                     <div className='app-columns'>
-                        <Positions positions={positions} />
+                        <Positions 
+                            positions={positions} 
+                        />
                     </div>
                     <div className='app-columns'>
                         {transactions && (
-                            <Timeline transactions={transactions}/>
+                            <Timeline 
+                                transactions={transactions}/>
                         )}
                         {(!transactions || transactions.length === 0) && (
-                            <h3>Empty Feed</h3>
+                            <div className="home-card">
+                                <h3>Your Feed</h3>
+                                <div className="empty-item-list">
+                                    <p className="home-card-subtitle">Your feed is empty.</p>
+                                </div>
+                            </div>
                         )}
                     </div>
                     <div className='app-columns'>
-                        <ItemList itemList={following} headerTitle='Following' />
-                        {(!following || following.length === 0 )&& (
-                            <h3>Not following anyone</h3>
-                        )}
-                        <button className='add-follower' onClick={this.viewAddFollower}>Add Follower</button>
+                        <ItemList 
+                            itemList={following} 
+                            headerTitle='Following' 
+                            following={(following && following.length !== 0 )}
+                            viewAddFollower={this.viewAddFollower}/>
                     </div>
                     
                     {/* Add Follower Modal */}
