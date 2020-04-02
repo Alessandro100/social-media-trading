@@ -2,6 +2,7 @@
     border: 1px solid rgba(0,0,0,0.6);
     padding: 10px;
     border-radius: 5px;
+    position: relative;
 
     .button-holder {
         margin-bottom: 10px;
@@ -68,6 +69,16 @@
     .action-button-container {
         display: flex;
         justify-content: space-evenly;
+    }
+
+    button:disabled,
+    button[disabled]{
+        opacity: 0.4;
+    }
+
+    .buy-loader {
+        position: absolute;
+        left: calc(50% - 20px);
     }
 
     .button-lrg {

@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import Dropdown from 'react-dropdown';
 import AlpacaService from '../../Services/alpaca';
 import UserService from '../../Services/user';
+import Modal from '@material-ui/core/Modal';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import Button from '@material-ui/core/Button';
 import 'react-dropdown/style.css';
 import './buy-sell-stock.scss';
 
@@ -16,6 +19,7 @@ class BuySellStock extends Component {
 
         this.handleQuantityChange = this.handleQuantityChange.bind(this);
         this.submitOrder = this.submitOrder.bind(this);
+        this.closeModal = this.closeModal.bind(this);
     }
 
     /***
@@ -28,21 +32,21 @@ class BuySellStock extends Component {
         action: 'buy',
         quantity: 0,
         showBannerMessage: false,
-        showConfirmMessage: false
+        showConfirmMessage: false,
+        isLoading: false
     }
 
     submitOrder() {
         const {action, quantity} = this.state;
         const {stockSymbol} = this.props
 
-        console.log("submit order");
+        this.setState({isLoading: true});
         AlpacaService.buySellStock(UserService.username, stockSymbol, action, quantity).then(res =>{
             console.log("ORDER SUCCESS!");
             console.log(res);
-            this.setState({showBannerMessage: true})
-            //display a message on the screen that the order was successful!
+            this.setState({showBannerMessage: true, isLoading: false})
         }, err =>{
-            console.log(err);
+            this.setState({isLoading: false})
         })
     }
 
@@ -50,16 +54,20 @@ class BuySellStock extends Component {
         this.setState({quantity: event.target.value});
     }
 
+    closeModal = () => {
+        this.setState({showBannerMessage: false, showConfirmMessage: false, quantity: 0})
+    }
+
     render(){
-        const {quantity, action, showBannerMessage, showConfirmMessage} = this.state;
-        const {stockSymbol, tradingPrice, cashAvailable} = this.props;
+        const {quantity, action, showBannerMessage, showConfirmMessage, isLoading} = this.state;
+        const {stockSymbol, tradingPrice, cashAvailable, hasPosition} = this.props;
 
         return(
             <div className="buy-sell-stock">
                 <h2>{stockSymbol}</h2>
                 <div className='button-holder'>
                     <button className={action === 'buy' ? 'active' : null} onClick={()=>this.setState({action: 'buy'})}>Buy</button>
-                    <button className={action === 'sell' ? 'active' : null} onClick={()=>this.setState({action: 'sell'})}>Sell</button>
+                    <button disabled={!hasPosition} className={action === 'sell' ? 'active' : null} onClick={()=>this.setState({action: 'sell'})}>Sell</button>
                 </div>
                 <div>
                     <div>Market Price</div>
@@ -89,12 +97,28 @@ class BuySellStock extends Component {
                     <label>Estimated Remaining Balance</label>
                     <div>{(cashAvailable - (quantity * tradingPrice)).toFixed(2)}$</div>
                 </div>
+                {isLoading && <CircularProgress className="buy-loader" />}
                 <div className='action-button-container'>
-                    <button className={showConfirmMessage ? 'button-lrg primary hide' : 'button-lrg primary'} onClick={()=>{this.setState({showConfirmMessage: true})}}>Review Order</button>
+                    <button disabled={quantity == 0} className={showConfirmMessage ? 'button-lrg primary hide' : 'button-lrg primary'} onClick={()=>{this.setState({showConfirmMessage: true})}}>Review Order</button>
                     <button className={!showConfirmMessage ? 'button-lrg primary hide' : 'button-lrg action'} onClick={()=>{this.setState({showConfirmMessage: false})}}>Edit</button>
-                    <button className={!showConfirmMessage ? 'button-lrg action hide' : 'button-lrg primary'} onClick={()=>this.submitOrder()}>Confirm Order</button>
+                    <button disabled={isLoading} className={!showConfirmMessage ? 'button-lrg action hide' : 'button-lrg primary'} onClick={()=>this.submitOrder()}>Confirm Order</button>
                 </div>
-                {showBannerMessage && (<h4>Your order to {action} {quantity} {stockSymbol} stocks has been placed!</h4>)}
+
+                <Modal
+                    open={showBannerMessage}
+                    onClose={this.closeModal}>
+                    <div className="add-follower-modal">
+                        <div className="add-follower-title">
+                            <h2>Success!</h2>
+                        </div>
+                        <div className="add-follower-modal-body">
+                            <div className="follower-search-holder">
+                                Your order to {action} {quantity} {stockSymbol} stocks has been placed!
+                            </div>
+                            <Button className="ok-button" onClick={()=> this.closeModal()}>Ok</Button>
+                        </div>
+                    </div>
+                </Modal>
             </div>
         )
     }

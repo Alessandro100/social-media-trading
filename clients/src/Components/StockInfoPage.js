@@ -82,7 +82,7 @@ export class StockInfoPage extends Component {
                     </div>
                     <div className='page-sidebar'>
                         {/* probably should be a seperate componenet */}
-                        <BuySellStock stockSymbol={stockSymbol} tradingPrice={currentPrice} cashAvailable={cashAvailable}/>
+                        <BuySellStock stockSymbol={stockSymbol} tradingPrice={currentPrice} cashAvailable={cashAvailable} hasPosition={position}/>
                         <div>
                             <h2>In your Portfolio</h2>
                             {position && (
