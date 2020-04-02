@@ -35,6 +35,16 @@ const AlpacaService = {
                 reject(err);
             })
         });
+    },
+    
+    getAndUpdateUsersAlpacaAccount: function(username) {
+        return new Promise((resolve, reject) =>{
+            APIService.get('update-and-get-alpaca-account', {username: username}).then(res =>{
+                resolve(res['data']);
+            }, err =>{
+                reject(err);
+            })
+        })
     }
 };
 

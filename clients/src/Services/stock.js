@@ -9,6 +9,16 @@ const StockService = {
                 reject(err);
             })
         })
+    },
+
+    getStockFinancialData(stockSymbol){
+        return new Promise((resolve, reject) =>{
+            APIService.get('financial-stock-info', {stock_symbol: stockSymbol}).then(stockData =>{
+                resolve(stockData['data']);
+            }, err =>{
+                reject(err);
+            })
+        })
     }
 }
 

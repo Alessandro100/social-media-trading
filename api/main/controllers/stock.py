@@ -9,6 +9,13 @@ parser.add_argument('username')
 parser.add_argument('stock_symbol')
 parser.add_argument('password')
 
+class StockFinancialInfo(Resource):
+    def get(self):
+        args = parser.parse_args()
+        r = requests.get('https://sandbox.iexapis.com/stable/stock/'+args['stock_symbol']+'/quote?token=Tpk_6d7ce216f5fe43ddb3de9ef3259bb550')
+        company_info = r.json()
+        return company_info
+
 class StockSocialInfo(Resource):
     def get(self):
         info = {}

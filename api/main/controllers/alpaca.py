@@ -87,3 +87,12 @@ class AlpacaPositions(Resource):
             position.delete()
         add_alpaca_positions_to_user(user, positions)
         return r.json()
+
+class AlpacaAccount(Resource):
+    def get(self):
+        args = parser.parse_args()
+        user = UserNode.nodes.first(username=args['username'])
+        account_info = get_alpaca_account(user.access_token)
+        user.free_cash = account_info['cash']
+        user.save()
+        return account_info

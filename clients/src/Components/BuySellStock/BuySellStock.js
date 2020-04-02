@@ -83,16 +83,16 @@ class BuySellStock extends Component {
                 </div>
                 <div className='inline-elements'>
                     <label>Estimated <b className='action'>{action}</b> Price:</label>
-                    <div>{quantity * tradingPrice}$</div>
+                    <div>{(quantity * tradingPrice).toFixed(2)}$</div>
                 </div>
                 <div className='inline-elements'>
                     <label>Estimated Remaining Balance</label>
-                    <div>{cashAvailable - (quantity * tradingPrice)}$</div>
+                    <div>{(cashAvailable - (quantity * tradingPrice)).toFixed(2)}$</div>
                 </div>
                 <div className='action-button-container'>
                     <button className={showConfirmMessage ? 'button-lrg primary hide' : 'button-lrg primary'} onClick={()=>{this.setState({showConfirmMessage: true})}}>Review Order</button>
-                    <button className={!showConfirmMessage ? 'button-lrg primary hide' : 'button-lrg primary'} onClick={()=>{this.setState({showConfirmMessage: false})}}>Edit</button>
-                    <button className={!showConfirmMessage ? 'button-lrg action hide' : 'button-lrg action'} onClick={()=>this.submitOrder()}>Confirm Order</button>
+                    <button className={!showConfirmMessage ? 'button-lrg primary hide' : 'button-lrg action'} onClick={()=>{this.setState({showConfirmMessage: false})}}>Edit</button>
+                    <button className={!showConfirmMessage ? 'button-lrg action hide' : 'button-lrg primary'} onClick={()=>this.submitOrder()}>Confirm Order</button>
                 </div>
                 {showBannerMessage && (<h4>Your order to {action} {quantity} {stockSymbol} stocks has been placed!</h4>)}
             </div>
