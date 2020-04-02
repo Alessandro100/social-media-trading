@@ -20,6 +20,7 @@ export class Position extends Component {
                 <div className='position-row'>
                     <div>Value: {currentValue}$</div>
                     <div>Profit: {profit.toFixed(2)}$</div>
+                    <div>Quantity: {position.qty}</div>
                 </div>
             </div>
         )

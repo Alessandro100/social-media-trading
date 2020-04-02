@@ -7,6 +7,7 @@ import UserService from '../Services/user';
 import AlpacaService from '../Services/alpaca';
 import StockItemList from './Item/StockItemList';
 import BuySellStock from './BuySellStock/BuySellStock';
+import Position from './Position/Position';
 
 export class StockInfoPage extends Component {
 
@@ -21,10 +22,12 @@ export class StockInfoPage extends Component {
             currentPrice: null,
             percentChange: null,
             cashAvailable: 0,
+            position: null,
         }
 
         this.loadStockData();
         this.loadUserBuyingPower();
+        this.loadPosition();
     }
 
     loadStockData() {
@@ -49,8 +52,20 @@ export class StockInfoPage extends Component {
         })
     }
 
+    loadPosition() {
+        const {stockSymbol} = this.props;
+        AlpacaService.getUserPositions(UserService.username).then(positions =>{
+            if(positions['message'] && positions['message'] === "no positions") {
+                this.setState({position: null});
+            } else {
+                const position = positions.find(p => p.symbol === stockSymbol);
+                this.setState({position: position});
+            }
+        })
+    }
+
     render() {
-        const {followerWhoOwn, topInvestorsWhoOwn, otherStocksPeopleOwn, companyName, currentPrice, percentChange, cashAvailable} = this.state;
+        const {followerWhoOwn, topInvestorsWhoOwn, otherStocksPeopleOwn, companyName, currentPrice, percentChange, cashAvailable, position} = this.state;
         const {stockSymbol} = this.props;
         
         return (
@@ -69,8 +84,13 @@ export class StockInfoPage extends Component {
                         {/* probably should be a seperate componenet */}
                         <BuySellStock stockSymbol={stockSymbol} tradingPrice={currentPrice} cashAvailable={cashAvailable}/>
                         <div>
-                            <h2>Portfolio</h2>
-                            <div>**Display stats of apple Portfolio here**</div>
+                            <h2>In your Portfolio</h2>
+                            {position && (
+                                <Position position={position}/>
+                            )}
+                            {!position && (
+                                <div>You currently don't own any {stockSymbol}</div>
+                            )}
                         </div>
                     </div>
                 </div>

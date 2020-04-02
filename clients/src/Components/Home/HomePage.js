@@ -36,7 +36,6 @@ export class HomePage extends Component {
     }
 
     loadPositions() {
-        //PositionService.getUserPositions(UserService.username).then(positions =>{
         AlpacaService.getUserPositions(UserService.username).then(positions =>{
             if(positions['message'] && positions['message'] === "no positions") {
                 this.setState({positions: null});

@@ -15,9 +15,6 @@ class Sectors extends Component {
       });
     });
 
-    console.log('this is the data');
-    console.log(data);
-
     return (
       <div>
         <PieChart

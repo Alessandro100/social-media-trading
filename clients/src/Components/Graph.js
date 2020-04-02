@@ -6,6 +6,8 @@ export class Graph extends Component {
         return (
             <div className='graph-container'>
                 <div>Heres where the graph will go</div>
+                <div>https://paper-api.markets/docs/api-documentation/api-v2/portfolio-history/</div>
+                <div>Get this data from the backend</div>
             </div>
         )
     }
