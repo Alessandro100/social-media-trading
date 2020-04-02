@@ -17,13 +17,13 @@ class Login extends Component {
             homeNavigateion: false
         }
 
-        if(localStorage.getItem('access_token') !== 'null') {
-            console.log("going through")
-            console.log(localStorage.getItem('access_token'));
-            UserService.logInAccessToken(localStorage.getItem('access_token')).then(res =>{
-                this.setState({homeNavigateion: true})
-            })
-        }
+        // if(localStorage.getItem('access_token') !== 'null') {
+        //     console.log("going through")
+        //     console.log(localStorage.getItem('access_token'));
+        //     UserService.logInAccessToken(localStorage.getItem('access_token')).then(res =>{
+        //         this.setState({homeNavigateion: true})
+        //     })
+        // }
 
         const urlVar = this.getUrlVars();
         if(urlVar && urlVar['code']) {
@@ -73,8 +73,10 @@ class Login extends Component {
     logInUsernamePassword = (event) => {
         event.preventDefault();
         const {username, password} = this.state;
+        const {userLoggedIn} = this.props;
         UserService.login(username, password).then(user =>{
             localStorage.setItem('access_token', user['access_token']);
+            userLoggedIn();
             this.setState({homeNavigateion: true})
         }, err =>{
             this.setState({errorMessage: 'wrong credentials'})
