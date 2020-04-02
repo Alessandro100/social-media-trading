@@ -42,7 +42,7 @@
 
 /* Header */
 .app-header {
-  background-color: #1B4E8D;
+  background-color: #20232a;
   height: 60px;
   padding: 10px 5px;
   display: flex;
@@ -61,11 +61,28 @@
   border-radius: 5px;
 }
 
+.circle-holder {
+  background-color:white;
+  border-radius:50%;
+  height: 50px;
+  width: 50px;
+  margin: 20px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .search-button {
   padding: 8px;
   border-radius: 5px;
   background: rgba(255,255,255,0.4);
   border: none;
+  color: white;
+  font-weight: bold;
+}
+
+.follower-search-btn {
+  background-color: lightgrey;
   color: white;
   font-weight: bold;
 }
@@ -81,7 +98,10 @@
 .Header-icon {
   height: 50px;
   float: right;
-  margin-right: 25px;
+}
+
+.Header-icon-smaller {
+  height:35px;
 }
 
 .Header-Fill {
@@ -159,4 +179,34 @@
 .stockinfo-card {
   width: 33%;
   padding: 15px;
+}
+
+.home-card {
+  margin: 20px;
+  height: 100%;
+  padding-top: 20px;
+  border: 1px lightgrey solid;
+  border-radius: 15px;
+
+  .home-card-subtitle {
+    font-size: 14px;
+    margin: 20px;
+    color: grey;
+  }
+
+  h3 {
+    text-transform: uppercase;
+  }
+
+  .empty-item-list {
+    padding-top:15%;
+  }
+
+  .follow-btn {
+    background: #7daae3;
+    border: none;
+    color: white;
+    width: 250px;
+  }
+
 }

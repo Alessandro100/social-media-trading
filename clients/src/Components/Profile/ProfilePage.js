@@ -8,7 +8,7 @@ import TransactionService from '../../Services/transaction';
 import UserService from '../../Services/user';
 import AlpacaService from '../../Services/alpaca';
 import Timeline from '../Timeline'
-import Sectors from '../Sectors';
+import Sectors from '../sectors';
 import './profile.scss';
 
 export class ProfilePage extends Component {

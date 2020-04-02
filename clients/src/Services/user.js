@@ -3,7 +3,7 @@ import APIService from "./api";
 const UserService = {
 
     username: null,
-    img: 'https://pickaface.net/gallery/avatar/unr_sample_161118_2054_ynlrg.png',
+    img: 'https://www.stickpng.com/assets/images/585e4bf3cb11b227491c339a.png',
     bgImg: 'https://www.designyourway.net/blog/wp-content/uploads/2018/06/Seamless-Polygon-Background.jpg',
     investorScore: 0,
     freeCash: 0,
