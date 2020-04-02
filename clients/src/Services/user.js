@@ -6,7 +6,7 @@ const UserService = {
     img: 'https://www.stickpng.com/assets/images/585e4bf3cb11b227491c339a.png',
     bgImg: 'https://www.designyourway.net/blog/wp-content/uploads/2018/06/Seamless-Polygon-Background.jpg',
     investorScore: 0,
-    freeCash: 0,
+    freeCash: 0, //when this value is used, it should always be fresh from alpaca
     positions: [],
 
     updateUserInfo(params, access_token) {
@@ -42,7 +42,7 @@ const UserService = {
 
     logout: function(){
         const resetUser = {username: null, img: null, bgImg: null, investorScore: null, freeCash: null}
-        this.setUserInfo(this.registerUser);
+        this.setUserInfo(resetUser);
         localStorage.setItem('access_token', null)
     },
 

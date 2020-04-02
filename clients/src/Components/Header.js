@@ -87,7 +87,7 @@ export class Header extends Component {
                 <div className='Header-Fill' />
                 
                 <div className='circle-holder'>
-                    <Link to='/profile'>
+                    <Link to={'/profile/' + UserService.username}>
                         <img className="Header-icon-smaller" src='https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/User_font_awesome.svg/768px-User_font_awesome.svg.png' />
                         {UserService.username}
                     </Link>
