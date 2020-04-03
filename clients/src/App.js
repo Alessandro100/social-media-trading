@@ -20,7 +20,7 @@ class App extends Component {
     super(props)
 
     //If there is an access token without a user, then it loads it
-    if (localStorage.getItem('access_token') !== 'null' && !UserService.username) {
+    if (localStorage.getItem('access_token') && localStorage.getItem('access_token') !== 'null' && !UserService.username) {
       UserService.loginAccessToken(localStorage.getItem('access_token')).then(res =>{
         this.setState({loading: false})
       })
