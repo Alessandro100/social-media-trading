@@ -1,5 +1,7 @@
 from flask_restful import reqparse, abort, Api, Resource
+from flask import abort
 from ..models.user import *
+import json
 
 parser = reqparse.RequestParser()
 parser.add_argument('username')
@@ -15,13 +17,13 @@ class User(Resource):
         user = UserNode.nodes.first(username=args['username'])
         return neomodel_to_json(user), 201
 
-    def post(self):
-        args = parser.parse_args()
-        user = UserNode(username=args['username'], password=args['password'], free_cash='0', img="", bg_img="", investor_score='0').save()
-        return {'status': 'good register path'}, 201
-
     def put(self):
         args = parser.parse_args()
+
+        unique_username_check = UserNode.nodes.first_or_none(username=args['username'])
+        if(unique_username_check is not None):
+            abort(406, 'username taken')
+
         user = UserNode.nodes.first(access_token=args['access_token'])
         #this is dumb, neomdel won't allow user[key] syntax
         for key, value in args.items():
@@ -55,7 +57,7 @@ class UserFollowRelation(Resource):
         user = UserNode.nodes.first(username=args['username'])
         user_to_follow = UserNode.nodes.first(username=args['username_to_follow'])
         user.follows.connect(user_to_follow)
-        return {'status': 'successful follow'}, 201
+        return json.dumps({'status': 'successful follow'}), 201
 
     def get(self):
         args = parser.parse_args()

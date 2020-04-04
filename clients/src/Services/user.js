@@ -57,16 +57,6 @@ const UserService = {
         })
     },
 
-    registerUser: function(username, password) {
-        return new Promise((resolve, reject) =>{
-            APIService.post('user', {username: username, password: password}).then(res =>{
-                resolve(res);
-            }, err =>{
-                reject(err);
-            })
-        })
-    },
-
     getUserInfo: function(username) {
         return new Promise((resolve, reject) =>{
             APIService.get('user', { username: username}).then(res =>{

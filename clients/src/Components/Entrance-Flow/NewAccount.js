@@ -13,7 +13,8 @@ class NewAccount extends Component {
             password: '',
             img: '',
             bgImg: '',
-            navigate: false
+            navigate: false,
+            showError: false
         }
 
         this.handleUsernameChange = this.handleUsernameChange.bind(this);
@@ -46,17 +47,19 @@ class NewAccount extends Component {
         const params = {username: username, password: password, img: img, bg_img: bgImg}
         UserService.updateUserInfo(params, access_token).then(user=>{
             localStorage.setItem('access_token', user['access_token']);
-            this.setState({navigate: true})
+            this.setState({navigate: true, showError: false})
+        }, err =>{
+            this.setState({showError: true})
         })
     }
 
     render() {
-        const {navigate} = this.state;
+        const {navigate, showError} = this.state;
         return (
             <div>
                 <h1>Create new Account Information</h1>
                 <form onSubmit={this.handleSubmit}>
-                    <h3>Enter a username</h3>
+                    <h3>Enter a username {showError && <span>(Username is already taken)</span>}</h3>
                     <input type="text" name="username" value={this.state.username} onChange={this.handleUsernameChange}></input>
                     <h3>Enter a password</h3>
                     <input type="password" name="password" value={this.state.password} onChange={this.handlePasswordChange}></input>
