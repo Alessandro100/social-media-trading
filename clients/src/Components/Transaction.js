@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 export class Transaction extends Component {
 
@@ -9,7 +10,8 @@ export class Transaction extends Component {
         return (
             <div className='box'>
                 <div>
-                    {transaction.username} {transaction.action} {transaction.quantity} stocks of {transaction.stock.name}
+                    <Link to={'/profile/' + transaction.username}>{transaction.username}</Link> &nbsp;
+                    {transaction.action} {transaction.quantity} stocks of {transaction.stock.name}
                     <div>{new Date(transaction.date).toLocaleDateString("en-US")}</div>
                 </div>
             </div>
