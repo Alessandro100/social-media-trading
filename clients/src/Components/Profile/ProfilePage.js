@@ -10,6 +10,7 @@ import AlpacaService from '../../Services/alpaca';
 import Timeline from '../Timeline'
 import Sectors from '../Sectors';
 import './profile.scss';
+import LeaderboardWidget from '../Leaderboard/LeaderboardWidget';
 
 export class ProfilePage extends Component {
 
@@ -24,12 +25,14 @@ export class ProfilePage extends Component {
         this.state ={
             transactions: [],
             positions: [],
-            userInfo: null
+            userInfo: null,
+            leaderboardInfo: null
         }
 
         this.loadUserInfo();
         this.loadTransactions();
         this.loadPositions();
+        
     }
 
     loadUserInfo() {
@@ -60,8 +63,7 @@ export class ProfilePage extends Component {
 
     render() {
         const { transactions, positions, userInfo } = this.state
-        console.log('positions')
-        console.log(positions)
+        const {username} = this.props;
         return (
             <>
             <Header />
@@ -74,6 +76,8 @@ export class ProfilePage extends Component {
                     <div className='page-sidebar'>
                         <h3>Investments</h3>
                         {positions && <Sectors positions={positions}/>}
+                        <h3>Leaderboard</h3>
+                        <LeaderboardWidget username={username}/>
                         <div>
                             <h3>Transactions</h3>
                             {transactions && <Timeline transactions={transactions}/>}

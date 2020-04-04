@@ -1,0 +1,16 @@
+.leaderboard-widget {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    .leaderboard-row {
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+.box {
+    &.active {
+        background-color: red;
+    }
+}

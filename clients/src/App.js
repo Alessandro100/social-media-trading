@@ -8,6 +8,7 @@ import Login from './Components/Entrance-Flow/Login';
 import NewAccount from './Components/Entrance-Flow/NewAccount';
 import ProfilePage from './Components/Profile/ProfilePage';
 import StockInfoPage from './Components/StockInfoPage';
+import Leaderboard from './Components/Leaderboard/Leaderboard';
 import UserService from './Services/user';
 
 class App extends Component {
@@ -49,6 +50,7 @@ class App extends Component {
               <Route exact path='/' render={() => <HomePage/> } />
               <Route exact path='/profile/:username' render={(props) => <ProfilePage username={props.match.params.username}/> } />
               <Route exact path='/stockinfo/:stock_symbol' render={(props) => <StockInfoPage stockSymbol={props.match.params.stock_symbol} />} />
+              <Route exact path='/leaderboard' render={() => <Leaderboard/>} />
               </>
             )}
             {!UserService.username && (
@@ -56,6 +58,7 @@ class App extends Component {
                 <Route exact path='/' render={() => <Redirect to={'/login'}/> } />
                 <Route exact path='/profile/:username' render={(props) => <Redirect to={'/login'}/> } />
                 <Route exact path='/stockinfo/:stock_symbol' render={(props) => <Redirect to={'/login'}/>} />
+                <Route exact path='/leaderboard' render={() => <Redirect to={'/login'}/>} />
               </>
             )}
 

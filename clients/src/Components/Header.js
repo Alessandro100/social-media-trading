@@ -95,11 +95,11 @@ export class Header extends Component {
                 <div className="circle-holder">
                     <img className='Header-icon' src='https://lh3.googleusercontent.com/proxy/fFsufN7bhAFoC4i-kSHLp1WT2RbL4M-7DHxSWpnFn1ZfSpPinJQfsPfkCVOVXR7XFruK_qy07S9e5v2gHipxbnaMinirXiUJMx16MPi4GAenArCj4TU' />
                 </div>
-                <a href="">
+                <Link to={'/leaderboard'}>
                     <div className="circle-holder">
                         <img className='Header-icon-smaller' src='https://cdn0.iconfinder.com/data/icons/social-messaging-productivity-4/128/rankings-512.png' />
                     </div>
-                </a>
+                </Link>
                 <div onClick={()=>{this.logout()}}>
                     <a href="">
                         <div className="circle-holder">

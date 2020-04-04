@@ -6,10 +6,12 @@ from neo4j import GraphDatabase
 
 from main.controllers.position import Position, PositionList
 from main.models.stock import Stock
+from main.models.leaderboard import *
 from main.controllers.user import User, UserFollowRelation, AuthenticateUser, AuthenticateUserAccessToken
 from main.controllers.transaction import Transaction, TransactionList, TransactionFeed
 from main.controllers.alpaca import AlpacaRegistrationToken, AlpacaTransaction, AlpacaPositions, AlpacaAccount
 from main.controllers.stock import StockSocialInfo, StockFinancialInfo
+from main.controllers.leaderboard import LeaderboardWidget, LeaderboardAll
 
 app = Flask(__name__)
 api = Api(app)
@@ -33,6 +35,10 @@ api.add_resource(TransactionFeed, '/feed')
 api.add_resource(StockSocialInfo, '/detail-stock-info')
 api.add_resource(StockFinancialInfo, '/financial-stock-info')
 api.add_resource(AlpacaAccount, '/update-and-get-alpaca-account')
+api.add_resource(LeaderboardWidget, '/leaderboard-widget')
+api.add_resource(LeaderboardAll, '/leaderboard')
+
+update_all_leaderboard_scores()
 
 if __name__ == '__main__':
     app.run(debug=True)
