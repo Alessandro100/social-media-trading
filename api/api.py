@@ -3,6 +3,7 @@ from flask_restful import Resource, Api
 from flask_cors import CORS
 from neomodel import StructuredNode, StringProperty, RelationshipTo, RelationshipFrom, config
 from neo4j import GraphDatabase
+from py2neo import authenticate, Graph
 
 from main.controllers.position import Position, PositionList
 from main.models.stock import Stock
@@ -20,7 +21,11 @@ CORS(app)
 #config.DATABASE_URL = 'bolt://neo4j:test@localhost:7687'
 config.DATABASE_URL = 'bolt://alessandro-admin:b.MoZwhe8WMRed.iQo9jJauPPjoowto@hobby-jffbmdhpafecgbkeaiinbnel.dbs.graphenedb.com:24787'
 uri = 'bolt://alessandro-admin:b.MoZwhe8WMRed.iQo9jJauPPjoowto@hobby-jffbmdhpafecgbkeaiinbnel.dbs.graphenedb.com:24787'
-driver = GraphDatabase.driver(uri, auth=("alessandro-admin", "b.MoZwhe8WMRed.iQo9jJauPPjoowto"), encrypted=False)
+uri2 = 'https://alessandro-admin:b.MoZwhe8WMRed.iQo9jJauPPjoowto@hobby-jffbmdhpafecgbkeaiinbnel.dbs.graphenedb.com:24780/db/data/'
+uri3 = 'https://alessandro-admin:b.MoZwhe8WMRed.iQo9jJauPPjoowto@hobby-jffbmdhpafecgbkeaiinbnel.dbs.graphenedb.com:24780'
+uri4 = 'https://hobby-jffbmdhpafecgbkeaiinbnel.dbs.graphenedb.com:24780/db/data/'
+authenticate("hobby-jffbmdhpafecgbkeaiinbnel.dbs.graphenedb.com:24780", "alessandro-admin", "b.MoZwhe8WMRed.iQo9jJauPPjoowto")
+driver = Graph(uri4)
 
 api.add_resource(User, '/user')
 api.add_resource(AuthenticateUser, '/authenticate')

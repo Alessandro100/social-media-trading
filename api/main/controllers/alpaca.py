@@ -1,8 +1,7 @@
 from neo4j import GraphDatabase
 from flask import Flask
 from flask_restful import reqparse, abort, Api, Resource
-from py2neo import Graph, NodeMatcher
-from py2neo.data import Node, Relationship
+from py2neo import Graph
 import requests
 import json
 from neomodel import StructuredNode, StringProperty, RelationshipTo, RelationshipFrom, config, IntegerProperty, UniqueIdProperty

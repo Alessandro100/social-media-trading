@@ -3,5 +3,5 @@ neo4j_driver==1.7.2
 Flask_Cors==3.0.8
 requests==2.22.0
 neomodel==3.3.2
-py2neo==4.3.0
+py2neo==2.0.8
 neo4j==1.7.6
