@@ -7,9 +7,6 @@ import './item.scss'
     render() {
         const {stockList, headerTitle} = this.props;
 
-        console.log("hey ssosss")
-        console.log(stockList);
-
         return (
             <div> 
                 <h3>{headerTitle}</h3>

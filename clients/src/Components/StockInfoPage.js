@@ -96,13 +96,13 @@ export class StockInfoPage extends Component {
                 </div>
                 <div className='stockinfo-container'>
                     <div className='stockinfo-card'>
-                        <ItemList itemList={followerWhoOwn} headerTitle='Followers Who Own' />
+                        <ItemList itemList={followerWhoOwn} headerTitle='Followers Who Own' displayOnly={true}/>
                     </div>
                     <div className='stockinfo-card'>
-                        <ItemList itemList={topInvestorsWhoOwn} headerTitle='Top Investors' />
+                        <ItemList itemList={topInvestorsWhoOwn} headerTitle='Top Investors Who Own' displayOnly={true}/>
                     </div>
                     <div className='stockinfo-card'>
-                        <StockItemList stockList={otherStocksPeopleOwn} headerTitle='People Also Own'/>
+                        <StockItemList stockList={otherStocksPeopleOwn} headerTitle='People Also Own' displayOnly={true}/>
                     </div>
                 </div>
             </>

@@ -43,6 +43,7 @@ def get_top_investors_with_stock(stock_symbol):
     #This is the cypher query to get the userNodes of the people you follow who own this stock
     query = """
         MATCH (u:UserNode)-[:OWNS]->(p:PositionNode)-[:`POSITION STOCK`]->(s:StockNode {symbol: $stock_symbol})
+        WHERE NOT u.username = ''
         RETURN u
         ORDER BY u.investor_score DESC
         LIMIT 5
@@ -59,7 +60,8 @@ def people_who_own_this_stock_also_own(stock_symbol):
         MATCH(u:UserNode)-[:OWNS]->(p:PositionNode)-[:`POSITION STOCK`]->(s:StockNode {symbol: $stock_symbol})
         MATCH(u:UserNode)-[:OWNS]->(p2:PositionNode)-[:`POSITION STOCK`]->(s2:StockNode)
         WHERE s2.symbol <> $stock_symbol
-        RETURN s2
+        RETURN DISTINCT s2
+        LIMIT 10
     """
     results, meta = db.cypher_query(query, params)
     stocks = [StockNode.inflate(row[0]) for row in results]

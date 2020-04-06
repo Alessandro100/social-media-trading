@@ -94,7 +94,6 @@ export class HomePage extends Component {
                         <ItemList 
                             itemList={following} 
                             headerTitle='Following' 
-                            following={(following && following.length !== 0 )}
                             viewAddFollower={this.viewAddFollower}/>
                     </div>
                     

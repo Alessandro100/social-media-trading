@@ -58,8 +58,9 @@ export class ProfilePage extends Component {
     loadPositions() {
         const {username} = this.props;
         AlpacaService.getUserPositions(username).then(positions =>{
+            
             AlpacaService.getAndUpdateUsersAlpacaAccount(username).then(account =>{
-                const freeCashPositionItem = {symbol: 'Free Cash', market_value: account['cash']}
+                const freeCashPositionItem = {symbol: 'Free Cash', market_value: account['cash'], quantity: 1}
                 positions.push(freeCashPositionItem)
                 this.setState({positions: positions});
             })
