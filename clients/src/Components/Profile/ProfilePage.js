@@ -11,35 +11,31 @@ import Timeline from '../Timeline'
 import Sectors from '../Sectors';
 import './profile.scss';
 import LeaderboardWidget from '../Leaderboard/LeaderboardWidget';
+import Button from '@material-ui/core/Button';
 
 export class ProfilePage extends Component {
 
     constructor(props) {
         super(props)
-        /**
-         * Things to get:
-         * User profile
-         * User positions (not available)
-         * User transactions
-         */
         this.state ={
             transactions: [],
             positions: [],
             userInfo: null,
-            leaderboardInfo: null
+            leaderboardInfo: null,
+            loadedFollowers: false,
+            isFollowing: false
         }
 
         this.loadUserInfo();
         this.loadTransactions();
         this.loadPositions();
-        
+        this.loadFollowers();
     }
 
     loadUserInfo() {
         const {username} = this.props;
 
         UserService.getUserInfo(username).then(userInfo =>{
-            console.log(userInfo);
             this.setState({userInfo: userInfo});
         })
     }
@@ -51,18 +47,35 @@ export class ProfilePage extends Component {
         })
     }
 
+    loadFollowers() {
+        const {username} = this.props;
+        UserService.getUserFollowing().then(following =>{
+            const isFollowing = following.find(user => user.username === username) !== undefined;
+            this.setState({loadedFollowers: true, isFollowing: isFollowing});
+        })
+    }
+
     loadPositions() {
         const {username} = this.props;
-        console.log("LOAD POSITIONS");
         AlpacaService.getUserPositions(username).then(positions =>{
-            console.log("GOT POSITIONS");
-            console.log(positions);
-            this.setState({positions: positions});
+            AlpacaService.getAndUpdateUsersAlpacaAccount(username).then(account =>{
+                const freeCashPositionItem = {symbol: 'Free Cash', market_value: account['cash']}
+                positions.push(freeCashPositionItem)
+                this.setState({positions: positions});
+            })
+        })
+    }
+
+    toggleFollowPosition() {
+        const { isFollowing } = this.state
+        const {username} = this.props;
+        UserService.toggleFollowStatus(username).then(_=>{
+            this.setState({isFollowing: !isFollowing});
         })
     }
 
     render() {
-        const { transactions, positions, userInfo } = this.state
+        const { transactions, positions, userInfo, loadedFollowers, isFollowing } = this.state
         const {username} = this.props;
         return (
             <>
@@ -70,6 +83,11 @@ export class ProfilePage extends Component {
                 <div className='page-container'>
                     <div className='page-main'>
                         {userInfo && <ProfileHeader userInfo={userInfo} />}
+                        {username !== UserService.username && loadedFollowers && (
+                            <Button variant="contained" color={isFollowing ? "default" : "primary"} onClick={()=>this.toggleFollowPosition()}>
+                                {isFollowing ? 'Unfollow' : 'Follow'}
+                            </Button>
+                        )}
                         <Graph />
                         {positions && <Positions positions={positions} />}
                     </div>

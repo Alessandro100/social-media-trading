@@ -38,7 +38,7 @@ api.add_resource(AlpacaAccount, '/update-and-get-alpaca-account')
 api.add_resource(LeaderboardWidget, '/leaderboard-widget')
 api.add_resource(LeaderboardAll, '/leaderboard')
 
-update_all_leaderboard_scores()
+#update_all_leaderboard_scores()
 
 if __name__ == '__main__':
     app.run(debug=True)

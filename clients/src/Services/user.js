@@ -88,7 +88,7 @@ const UserService = {
         })
     },
 
-    addFollower: function(username_to_follow) {
+    toggleFollowStatus: function(username_to_follow) {
         return new Promise((resolve, reject) =>{
             APIService.post('follow', {username: UserService.username, username_to_follow: username_to_follow}).then(res =>{
                 resolve(res);

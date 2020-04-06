@@ -56,7 +56,11 @@ class UserFollowRelation(Resource):
         args = parser.parse_args()
         user = UserNode.nodes.first(username=args['username'])
         user_to_follow = UserNode.nodes.first(username=args['username_to_follow'])
-        user.follows.connect(user_to_follow)
+        #check if a connection exists, if not follows, if so, unfollows
+        if user.follows.is_connected(user_to_follow):
+            user.follows.disconnect(user_to_follow)
+        else:
+            user.follows.connect(user_to_follow)
         return json.dumps({'status': 'successful follow'}), 201
 
     def get(self):
