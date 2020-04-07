@@ -9,6 +9,8 @@ from ..models.transaction import createTransaction
 from ..models.user import UserNode, neomodel_to_json
 from ..models.position import *
 from ..models.alpaca import *
+from ..constants.environment_variables import get_environment_variables
+
 
 #from main.models.user import UserNode
 
@@ -29,9 +31,9 @@ class AlpacaRegistrationToken(Resource):
         PARAMS = {
             'grant_type': 'authorization_code',
             'code':args['code'],
-            'client_id': '606c58263dae63dd827a2b1395f76150',
-            'client_secret': '76ae67c88adfdec78fa23d8b57e219a8210a34c4',
-            'redirect_uri': 'http://localhost:3000/login/'
+            'client_id': get_environment_variables()['ALPACA_CLIENT_ID'],
+            'client_secret': get_environment_variables()['ALPACA_SECRET_KEY'],
+            'redirect_uri': get_environment_variables()['ALPACA_REDIRECT']
         }     
         URL = 'https://api.alpaca.markets/oauth/token'   
         r = requests.post(url = URL, params = PARAMS)

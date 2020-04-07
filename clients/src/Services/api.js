@@ -1,6 +1,7 @@
 import axios from 'axios';
+import EnvironmentVariables from '../Constants/EnvironmentVariables'
 
-const BASE_URL = 'http://127.0.0.1:5000/'
+const BASE_URL = EnvironmentVariables.BACKEND_API_URL
 
 const APIService = {
     post: function(route, params) {
@@ -18,7 +19,7 @@ const APIService = {
     get: function(route, params) {
         return new Promise((resolve, reject) =>{
             const url = BASE_URL + route;
-            //print("GET REQUEST: " + url)
+            //console.log("GET REQUEST: " + url)
             axios.get(url, {params: params}).then(res => {
                 resolve(res)
             }, err =>{

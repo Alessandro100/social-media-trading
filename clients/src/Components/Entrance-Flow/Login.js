@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import AlpacaService from '../../Services/alpaca';
 import UserService from '../../Services/user';
 import { Redirect } from "react-router-dom";
+import EnvironmentVariables from '../../Constants/EnvironmentVariables';
 import './entrance-flow.scss';
 
 class Login extends Component {
@@ -16,14 +17,6 @@ class Login extends Component {
             errorMessage: '',
             homeNavigateion: false
         }
-
-        // if(localStorage.getItem('access_token') !== 'null') {
-        //     console.log("going through")
-        //     console.log(localStorage.getItem('access_token'));
-        //     UserService.logInAccessToken(localStorage.getItem('access_token')).then(res =>{
-        //         this.setState({homeNavigateion: true})
-        //     })
-        // }
 
         const urlVar = this.getUrlVars();
         if(urlVar && urlVar['code']) {
@@ -63,8 +56,8 @@ class Login extends Component {
     }
 
     logIntoAlpaca(){
-        const redirectUri = 'http://localhost:3000/login/';
-        const clientId = '606c58263dae63dd827a2b1395f76150';
+        const redirectUri = EnvironmentVariables.ALPACA_REDIRECT_URL;
+        const clientId = EnvironmentVariables.ALPACA_CLIENT_ID;
         const alpacaUrl = 'https://app.alpaca.markets/oauth/authorize?response_type=code&client_id='+clientId+'&redirect_uri='+redirectUri+'&scope=trading'
         window.location.href = alpacaUrl;
     }
