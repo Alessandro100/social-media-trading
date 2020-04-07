@@ -19,10 +19,10 @@ api = Api(app)
 CORS(app)
 
 #config.DATABASE_URL = 'bolt://neo4j:test@localhost:7687'
-config.DATABASE_URL = 'bolt://alessandro-admin:b.MoZwhe8WMRed.iQo9jJauPPjoowto@hobby-jffbmdhpafecgbkeaiinbnel.dbs.graphenedb.com:24787'
-uri = 'bolt://alessandro-admin:b.MoZwhe8WMRed.iQo9jJauPPjoowto@hobby-jffbmdhpafecgbkeaiinbnel.dbs.graphenedb.com:24787'
-uri2 = 'https://alessandro-admin:b.MoZwhe8WMRed.iQo9jJauPPjoowto@hobby-jffbmdhpafecgbkeaiinbnel.dbs.graphenedb.com:24780/db/data/'
-uri3 = 'https://alessandro-admin:b.MoZwhe8WMRed.iQo9jJauPPjoowto@hobby-jffbmdhpafecgbkeaiinbnel.dbs.graphenedb.com:24780'
+#config.DATABASE_URL = 'bolt://alessandro-admin:b.MoZwhe8WMRed.iQo9jJauPPjoowto@hobby-jffbmdhpafecgbkeaiinbnel.dbs.graphenedb.com:24787'
+#uri = 'bolt://alessandro-admin:b.MoZwhe8WMRed.iQo9jJauPPjoowto@hobby-jffbmdhpafecgbkeaiinbnel.dbs.graphenedb.com:24787'
+#uri2 = 'https://alessandro-admin:b.MoZwhe8WMRed.iQo9jJauPPjoowto@hobby-jffbmdhpafecgbkeaiinbnel.dbs.graphenedb.com:24780/db/data/'
+#uri3 = 'https://alessandro-admin:b.MoZwhe8WMRed.iQo9jJauPPjoowto@hobby-jffbmdhpafecgbkeaiinbnel.dbs.graphenedb.com:24780'
 uri4 = 'https://hobby-jffbmdhpafecgbkeaiinbnel.dbs.graphenedb.com:24780/db/data/'
 authenticate("hobby-jffbmdhpafecgbkeaiinbnel.dbs.graphenedb.com:24780", "alessandro-admin", "b.MoZwhe8WMRed.iQo9jJauPPjoowto")
 driver = Graph(uri4)
