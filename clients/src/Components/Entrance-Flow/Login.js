@@ -92,20 +92,24 @@ class Login extends Component {
                     <div className="login-holder">
                         <div className="login-form">
                             <h3>Sign Up</h3>
-                            <img className="login-alpaca" src={Alpaca}></img>
-                            <div className="login-sub-subtitle">Don't Have an Account? <br/>Join the Alpaca Community for free here:</div>
-                            <Button className="btn btn-create-account" onClick={()=>this.logIntoAlpaca()}>Create Account</Button>
+                            <div className="login-form-holder-1">
+                                <img className="login-alpaca" src={Alpaca}></img>
+                                <div className="login-sub-subtitle">Don't Have an Account? <br/>Join the Alpaca Community for free here:</div>
+                                <Button className="btn btn-create-account" onClick={()=>this.logIntoAlpaca()}>Create Account</Button>
+                            </div>
                         </div>
                         <div className="login-form">
                             <h3>Sign In</h3>
-                            {errorMessage && <h3>{errorMessage}</h3>}
-                            <form onSubmit={this.logInUsernamePassword}>
-                                <div className="login-sub-subtitle">Enter a username:</div>
-                                <input className="login-input" type="text" name="username" value={this.state.username} onChange={this.handleUsernameChange}></input>
-                                <div className="login-sub-subtitle">Enter a password:</div>
-                                <input className="login-input" type="password" name="password" value={this.state.password} onChange={this.handlePasswordChange}></input><br/>
-                                <Button className="btn btn-login" type="submit" value="submit">Submit</Button>
-                            </form>
+                            <div className="login-form-holder-2">
+                                {errorMessage && <h3>{errorMessage}</h3>}
+                                <form onSubmit={this.logInUsernamePassword}>
+                                    <div className="login-sub-subtitle">Enter a username:</div>
+                                    <input className="login-input" type="text" name="username" value={this.state.username} onChange={this.handleUsernameChange}></input>
+                                    <div className="login-sub-subtitle">Enter a password:</div>
+                                    <input className="login-input" type="password" name="password" value={this.state.password} onChange={this.handlePasswordChange}></input><br/>
+                                    <Button className="btn btn-login" type="submit" value="submit">Submit</Button>
+                                </form>
+                            </div>
                             {access_token && <Redirect to={"/new-account/" + access_token} push={true}/>}
                             {homeNavigateion && <Redirect to={"/"} push={true}/>}
                         </div>
