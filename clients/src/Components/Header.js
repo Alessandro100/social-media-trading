@@ -85,15 +85,16 @@ export class Header extends Component {
                 />
                 <i className="fas fa-search"></i>
                 <div className='Header-Fill' />
-                
+                {UserService.username}
                 <div className='circle-holder'>
                     <Link to={'/profile/' + UserService.username}>
                         <img className="Header-icon-smaller" src='https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/User_font_awesome.svg/768px-User_font_awesome.svg.png' />
-                        {UserService.username}
                     </Link>
                 </div>
                 <div className="circle-holder">
-                    <img className='Header-icon' src='https://lh3.googleusercontent.com/proxy/fFsufN7bhAFoC4i-kSHLp1WT2RbL4M-7DHxSWpnFn1ZfSpPinJQfsPfkCVOVXR7XFruK_qy07S9e5v2gHipxbnaMinirXiUJMx16MPi4GAenArCj4TU' />
+                    <Link to={'/'}>
+                        <img className='Header-icon-smaller' src='https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Home_Icon.svg/768px-Home_Icon.svg.png' />
+                    </Link>
                 </div>
                 <Link to={'/leaderboard'}>
                     <div className="circle-holder">

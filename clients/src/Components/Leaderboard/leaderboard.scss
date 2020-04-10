@@ -7,10 +7,87 @@
         display: flex;
         justify-content: space-between;
     }
+
+}
+
+.leaderboard-box-holder {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 30px;
+
+    .box {
+        width: 50%;
+        display: flex;
+        justify-content: SPACE-AROUND;
+        align-items: center;
+
+        .leaderboard-number {
+            font-size: 55px;
+            font-weight: bolder;
+            padding-right: 20px;
+        }
+
+        .leaderboard-bio-holder {
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .leaderboard-bio {
+            display: flex;
+            flex-direction: column;
+            padding-left: 20px;
+
+            a {
+                text-decoration: none;
+            }
+        }
+
+        .leaderboard-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+
+        .leaderboard-alt-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 1px black solid;
+        }
+    }
+
+    .active {
+        background-color: grey;
+    }
+}
+
+.leaderboard-title-holder {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 25px;
+
+    h3, p {
+        margin: 0;
+        padding: 0;
+    }
+
+    p {
+        padding-top: 10px;
+    }
+
+    h3 {
+        text-transform: uppercase;
+        letter-spacing: 2px; 
+        padding-top:10px;
+    }
 }
 
 .box {
     &.active {
-        background-color: red;
+        background-color: lightblue;
     }
 }

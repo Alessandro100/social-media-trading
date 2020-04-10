@@ -77,18 +77,20 @@ export class HomePage extends Component {
                         />
                     </div>
                     <div className='app-columns'>
-                        {transactions && (
-                            <Timeline 
-                                transactions={transactions}/>
-                        )}
-                        {(!transactions || transactions.length === 0) && (
-                            <div className="home-card">
-                                <h3>Your Feed</h3>
-                                <div className="empty-item-list">
-                                    <p className="home-card-subtitle">Your feed is empty.</p>
-                                </div>
+                        <div className="home-card">
+                            <h3>Your Feed</h3>
+                            <div className="feed-box">
+                                {transactions && (
+                                    <Timeline 
+                                        transactions={transactions}/>
+                                )}
+                                {(!transactions || transactions.length === 0) && (
+                                    <div className="empty-item-list">
+                                        <p className="home-card-subtitle">Your feed is empty.</p>
+                                    </div>
+                                )}
                             </div>
-                        )}
+                        </div>
                     </div>
                     <div className='app-columns'>
                         <ItemList 
