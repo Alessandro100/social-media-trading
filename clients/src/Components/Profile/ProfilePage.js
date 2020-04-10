@@ -23,7 +23,7 @@ export class ProfilePage extends Component {
             userInfo: null,
             leaderboardInfo: null,
             loadedFollowers: false,
-            isFollowing: false
+            isFollowing: false,
         }
 
         this.loadUserInfo();
@@ -59,12 +59,11 @@ export class ProfilePage extends Component {
     loadPositions() {
         const {username} = this.props;
         AlpacaService.getUserPositions(username).then(positions =>{
-            
-            AlpacaService.getAndUpdateUsersAlpacaAccount(username).then(account =>{
-                const freeCashPositionItem = {symbol: 'Free Cash', market_value: account['cash'], quantity: 1}
-                positions.push(freeCashPositionItem)
-                this.setState({positions: positions});
-            })
+            this.setState({positions: positions});
+        })
+        AlpacaService.getAndUpdateUsersAlpacaAccount(username).then(account =>{
+            const freeCashPositionItem = {symbol: 'Free Cash', market_value: account['cash'], quantity: 1}
+            this.setState({cashPosition: freeCashPositionItem});
         })
     }
 
@@ -77,7 +76,7 @@ export class ProfilePage extends Component {
     }
 
     render() {
-        const { transactions, positions, userInfo, loadedFollowers, isFollowing } = this.state
+        const { transactions, positions, userInfo, loadedFollowers, isFollowing, cashPosition } = this.state
         const {username} = this.props;
         return (
             <>
@@ -95,7 +94,7 @@ export class ProfilePage extends Component {
                     </div>
                     <div className='page-sidebar'>
                         <h3>Investments</h3>
-                        {positions && <Sectors positions={positions}/>}
+                        {positions && cashPosition && <Sectors positions={positions.concat(cashPosition)}/>}
                         <h3>Leaderboard</h3>
                         <LeaderboardWidget username={username}/>
                         <div>
