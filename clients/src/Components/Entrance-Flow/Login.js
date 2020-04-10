@@ -92,7 +92,7 @@ class Login extends Component {
                     <div className="login-holder">
                         <div className="login-form">
                             <h3>Sign Up</h3>
-                            <div className="login-form-holder-1">
+                            <div className="login-form-holder">
                                 <img className="login-alpaca" src={Alpaca}></img>
                                 <div className="login-sub-subtitle">Don't Have an Account? <br/>Join the Alpaca Community for free here:</div>
                                 <Button className="btn btn-create-account" onClick={()=>this.logIntoAlpaca()}>Create Account</Button>
@@ -100,7 +100,7 @@ class Login extends Component {
                         </div>
                         <div className="login-form">
                             <h3>Sign In</h3>
-                            <div className="login-form-holder-2">
+                            <div className="login-form-holder">
                                 {errorMessage && <h3>{errorMessage}</h3>}
                                 <form onSubmit={this.logInUsernamePassword}>
                                     <div className="login-sub-subtitle">Enter a username:</div>
