@@ -4,7 +4,6 @@ import Chart from 'react-apexcharts';
 import AlpacaService from '../Services/alpaca';
 import UserService from '../Services/user';
 import moment from 'moment';
-import createTypography from '@material-ui/core/styles/createTypography';
 
 export class Graph extends Component {
 
@@ -13,7 +12,7 @@ export class Graph extends Component {
         this.state = {
             options: {
                 chart: {
-                  id: "basic-bar"
+                  id: "equity-graph"
                 },
                 xaxis: {
                   categories: []
@@ -59,8 +58,7 @@ export class Graph extends Component {
             this.setState({
                 options: {
                     chart: {
-                      id: "basic-bar",
-                      title: "hjfsjkal"
+                      id: "equity-graph"
                     },
                     xaxis: {
                         type: 'category',
