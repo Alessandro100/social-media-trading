@@ -6,7 +6,6 @@ from neo4j import GraphDatabase
 from py2neo import authenticate, Graph
 
 from main.controllers.position import Position, PositionList
-from main.models.stock import Stock
 from main.models.leaderboard import *
 from main.controllers.user import User, UserFollowRelation, AuthenticateUser, AuthenticateUserAccessToken
 from main.controllers.transaction import Transaction, TransactionList, TransactionFeed

@@ -7,35 +7,13 @@ import UserService from '../Services/user';
 import Button from '@material-ui/core/Button'
 import '../App.scss';
 import FuzzySearch from 'react-fuzzy'
+import StockService from '../Services/stock'
 
 export class Header extends Component {
 
     state = {
         logout: false,
-        companies: [
-            {id:"AAPL"},
-            {id: "AMZN"},
-            {id: "TOPS"},
-            {id: "MSFT"},
-            {id: "VVUS"},
-            {id: "SHIP"},
-            {id: "INTC"},
-            {id: "SIRI"},
-            {id: "CMCSA"},
-            {id: "CSCO"},
-            {id: "NVDA"},
-            {id: "SBUX"},
-            {id: "EBAY"},
-            {id: "HBAN"},
-            {id: "MRVL"},
-            {id: "QCOM"},
-            {id: "ATHX"},
-            {id: "GILD"},
-            {id: "SCON"},
-            {id: "AMAT"},
-            {id: "JBLU"},
-            {id: "ATVI"}
-        ]
+        companies: StockService.getStockList()
     }
 
     logout(){
@@ -47,13 +25,6 @@ export class Header extends Component {
         window.location.href = '/stockInfo/'+id;
     }
 
-    componentDidMount(){
-        console.log('grab data')
-        var companies = []
-
-
-    }
-
     render() {
         const { logout, companies } = this.state;
         return(
@@ -63,7 +34,7 @@ export class Header extends Component {
                 </Link>
                 <FuzzySearch
                     list={companies}
-                    keys={['id']}
+                    keys={['Name', 'Symbol']}
                     width={430}
                     placeholder="Which stock are you interested in?"
                     className="header-input"
@@ -74,10 +45,9 @@ export class Header extends Component {
                             <div
                               key={i}
                               style={style}
-                              onClick={ ()=>this.fuzzySearch(val.id) }
+                              onClick={ ()=>this.fuzzySearch(val.Symbol) }
                             >
-                              {val.id}
-                              <span style={{ float: 'right', opacity: 0.5 }}>by {val.id}</span>
+                              {val.Symbol} - {val.Name}
                             </div>
                           );
                         });

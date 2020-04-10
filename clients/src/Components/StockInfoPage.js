@@ -76,7 +76,7 @@ export class StockInfoPage extends Component {
                         <h1>{companyName}</h1>
                         <h3>{stockSymbol}</h3>
                         <div>
-                            Price(USD): {currentPrice}$ ({percentChange}%)
+                            Price(USD): {currentPrice}$ ({Number(percentChange).toFixed(2)}%)
                         </div>
                         <StockInfoGraph />
                     </div>
