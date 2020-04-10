@@ -10,6 +10,7 @@ import TransactionService from '../../Services/transaction';
 import PositionService from '../../Services/positions';
 import UserService from '../../Services/user';
 import AlpacaService from '../../Services/alpaca';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import './home.scss';
 import { Card } from 'react-bootstrap'
 
@@ -20,7 +21,10 @@ export class HomePage extends Component {
         this.state = {
             transactions: [],
             following: [],
-            addFollowerMode: false
+            addFollowerMode: false,
+            isLoadingPositions: true,
+            isLoadingTransactions: true,
+            isLoadingFollowers: true
         }
         this.loadTransactions();
         this.loadPositions();
@@ -31,23 +35,23 @@ export class HomePage extends Component {
 
     loadTransactions() {
         TransactionService.getTransactionFeed(UserService.username).then(transactions =>{
-            this.setState({transactions: transactions});
+            this.setState({transactions: transactions, isLoadingTransactions: false});
         });
     }
 
     loadPositions() {
         AlpacaService.getUserPositions(UserService.username).then(positions =>{
             if(positions['message'] && positions['message'] === "no positions" || positions.length == 0) {
-                this.setState({positions: null});
+                this.setState({positions: null, isLoadingPositions: false});
             } else {
-                this.setState({positions: positions});
+                this.setState({positions: positions, isLoadingPositions: false});
             }
         })
     }
 
     loadFollowers() {
         UserService.getUserFollowing().then(following =>{
-            this.setState({following: following});
+            this.setState({following: following, isLoadingFollowers: false});
         })
     }
 
@@ -66,17 +70,19 @@ export class HomePage extends Component {
 
     render() {
         // const { positions, followers } = this.props
-        const { transactions, positions, following } = this.state;
+        const { transactions, positions, following, isLoadingFollowers, isLoadingTransactions, isLoadingPositions } = this.state;
         return (
             <div className="App">
                 <Header />
                 <div className='App-Container'>
                     <div className='app-columns'>
+                        {isLoadingPositions && <CircularProgress />}
                         <Positions 
                             positions={positions} 
                         />
                     </div>
                     <div className='app-columns'>
+                        {isLoadingTransactions && <CircularProgress />}
                         {transactions && (
                             <Timeline 
                                 transactions={transactions}/>
@@ -91,6 +97,7 @@ export class HomePage extends Component {
                         )}
                     </div>
                     <div className='app-columns'>
+                        {isLoadingFollowers && <CircularProgress />}
                         <ItemList 
                             itemList={following} 
                             headerTitle='Following' 
