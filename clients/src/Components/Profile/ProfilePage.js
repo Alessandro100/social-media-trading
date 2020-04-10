@@ -89,7 +89,8 @@ export class ProfilePage extends Component {
                                 {isFollowing ? 'Unfollow' : 'Follow'}
                             </Button>
                         )}
-                        <Graph />
+                        <Graph 
+                            username={ this.props.username } />
                         {positions && <Positions positions={positions} />}
                     </div>
                     <div className='page-sidebar'>

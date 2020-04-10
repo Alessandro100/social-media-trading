@@ -10,7 +10,7 @@ from main.models.stock import Stock
 from main.models.leaderboard import *
 from main.controllers.user import User, UserFollowRelation, AuthenticateUser, AuthenticateUserAccessToken
 from main.controllers.transaction import Transaction, TransactionList, TransactionFeed
-from main.controllers.alpaca import AlpacaRegistrationToken, AlpacaTransaction, AlpacaPositions, AlpacaAccount
+from main.controllers.alpaca import AlpacaRegistrationToken, AlpacaTransaction, AlpacaPositions, AlpacaAccount, AlpacaTimeline
 from main.controllers.stock import StockSocialInfo, StockFinancialInfo
 from main.controllers.leaderboard import LeaderboardWidget, LeaderboardAll
 
@@ -35,6 +35,7 @@ api.add_resource(StockFinancialInfo, '/financial-stock-info')
 api.add_resource(AlpacaAccount, '/update-and-get-alpaca-account')
 api.add_resource(LeaderboardWidget, '/leaderboard-widget')
 api.add_resource(LeaderboardAll, '/leaderboard')
+api.add_resource(AlpacaTimeline, '/alpaca-timeline')
 
 #update_all_leaderboard_scores()
 
