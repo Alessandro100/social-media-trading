@@ -43,7 +43,8 @@ export class ProfilePage extends Component {
     loadTransactions() {
         const {username} = this.props;
         TransactionService.getTransactionFeed(username).then(transactions =>{
-            this.setState({transactions: transactions});
+            const myTransactions = transactions.filter(t => t.username == username);
+            this.setState({transactions: myTransactions});
         })
     }
 

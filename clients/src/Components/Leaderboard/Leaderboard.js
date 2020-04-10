@@ -51,7 +51,7 @@ export class Leaderboard extends Component {
                 {users.map((user, index) =>(
                     (user && user.username && (
                         <div className={this.getClassName(user)}>
-                            {index + 1}. <Link to={'/profile/' + user.username}>{user.username}</Link>{Number(user.investor_score).toFixed(2)}
+                            {index + 1}. <Link to={'/profile/' + user.username}>{user.username}</Link>&nbsp;{Number(user.investor_score).toFixed(2)}
                         </div>
                     ))
                     
