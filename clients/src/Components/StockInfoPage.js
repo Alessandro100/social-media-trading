@@ -73,26 +73,28 @@ export class StockInfoPage extends Component {
                 <Header />
                 <div className='page-container'>
                     <div className='page-main'>
-                        <h1>{companyName}</h1>
-                        <h3>{stockSymbol}</h3>
-                        <div>
-                            Price(USD): {currentPrice}$ ({Number(percentChange).toFixed(2)}%)
+                        <div className='stockinfo-header'>
+                            <div style={{'margin-left': '25px'}}>
+                                <h1>{companyName}</h1>
+                                <h3>{stockSymbol}</h3>
+                                <div>
+                                    Price(USD): {currentPrice}$ ({Number(percentChange).toFixed(2)}%)
+                                </div>
+                            </div>
+                            <div>
+                                {position && (
+                                    <Position position={position}/>
+                                )}
+                                {!position && (
+                                    <div>You currently don't own any {stockSymbol}</div>
+                                )}
+                            </div>
                         </div>
-                        <StockInfoGraph 
-                            stockSymbol={this.props.stockSymbol}/>
+                        
+                        <StockInfoGraph stockSymbol={this.props.stockSymbol}/>
                     </div>
                     <div className='page-sidebar'>
-                        {/* probably should be a seperate componenet */}
                         <BuySellStock stockSymbol={stockSymbol} tradingPrice={currentPrice} cashAvailable={cashAvailable} hasPosition={position}/>
-                        <div>
-                            <h2>In your Portfolio</h2>
-                            {position && (
-                                <Position position={position}/>
-                            )}
-                            {!position && (
-                                <div>You currently don't own any {stockSymbol}</div>
-                            )}
-                        </div>
                     </div>
                 </div>
                 <div className='stockinfo-container'>

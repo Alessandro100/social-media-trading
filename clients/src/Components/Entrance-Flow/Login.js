@@ -7,6 +7,7 @@ import './entrance-flow.scss';
 import Header from '../Header';
 import Button from '@material-ui/core/Button';
 import HeaderImage from '../../Logos/stock-business-header.jpg';
+import OceanHeaderImage from '../../Logos/ocean.jpg';
 import Alpaca from '../../Logos/alpaca.jpg'
 import Logo from '../../Logos/navigatr-logo.png';
 
@@ -86,7 +87,7 @@ class Login extends Component {
         return (
             <div>
                 <div className="login-body">
-                    <img className="login-header-image" src={HeaderImage}></img>
+                    <div className="login-header-image" style={{backgroundImage: `url(${OceanHeaderImage})`}}></div>
                     <h1>Welcome</h1>
                     <img className="login-alpaca" src={Logo}></img>
                     <div className="login-subtitle">Learn to Invest, Track your Progress, and Build Community.</div>

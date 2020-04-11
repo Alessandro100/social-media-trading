@@ -24,7 +24,7 @@ export class Transaction extends Component {
                     </h4>
                 </Link>
                 <div className="box-transaction-info">
-                    <Link to={'/profile/' + transaction.username}>{transaction.username}<i className="fa fas-search"></i></Link>&nbsp;
+                    <Link to={'/profile/' + transaction.username} className='username'>{transaction.username}<i className="fa fas-search"></i></Link>&nbsp;
                     {action_readable} {transaction.quantity} {stock_string} of {transaction.stock.name}
                     <div>{new Date(transaction.date).toLocaleDateString("en-US")}</div>
                 </div>

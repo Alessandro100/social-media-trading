@@ -76,7 +76,7 @@ export class HomePage extends Component {
                     </div>
                     <div className='app-columns'>
                         {isLoadingTransactions && <CircularProgress />}
-                        <div className="home-card">
+                        <div className="home-card" style={{height: '90%'}}>
                             <h3>Your Feed</h3>
                             <div className="feed-box">
                                 {transactions && (

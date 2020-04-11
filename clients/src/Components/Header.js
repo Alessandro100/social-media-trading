@@ -8,6 +8,7 @@ import Button from '@material-ui/core/Button'
 import '../App.scss';
 import FuzzySearch from 'react-fuzzy'
 import StockService from '../Services/stock'
+import Logo from '../Logos/navigatr-logo.png';
 
 export class Header extends Component {
 
@@ -30,7 +31,7 @@ export class Header extends Component {
         return(
             <div className='app-header'>
                 <Link to='/' className='header-logo' com>
-                    <img src="https://99designs-blog.imgix.net/blog/wp-content/uploads/2018/10/attachment_80627598-e1539959007146.jpeg?auto=format&q=60&fit=max&w=930"/>
+                    <img src={Logo}/>
                 </Link>
                 <FuzzySearch
                     list={companies}

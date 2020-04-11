@@ -19,12 +19,12 @@ export default class ItemList extends Component {
                                 <Item key={item.id} item={item} />
                             ))}
                         </div> 
-                        {!displayOnly && <Button onClick={this.props.viewAddFollower}>Add Follower</Button>}
+                        {!displayOnly && <Button onClick={this.props.viewAddFollower}>Find Users</Button>}
                     </div>
                 :   
                     <div className="empty-item-list">
                         <p className="home-card-subtitle">Looks like you're not following anyone yet.</p>
-                        {!displayOnly && <Button onClick={this.props.viewAddFollower}>Add Follower</Button>}
+                        {!displayOnly && <Button onClick={this.props.viewAddFollower}>Find Users</Button>}
                     </div>
                 }
             </div>

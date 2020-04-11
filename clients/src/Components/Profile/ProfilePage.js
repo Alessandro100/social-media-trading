@@ -105,7 +105,7 @@ export class ProfilePage extends Component {
                     <div className='page-sidebar'>
                         <h3>Investments</h3>
                         {positions && cashPosition && <Sectors positions={positions.concat(cashPosition)}/>}
-                        <h3>Leaderboard</h3>
+                        <h3>Leaderboard Rank</h3>
                         <LeaderboardWidget username={username}/>
                         <div className="home-card">
                             <h3>Transactions</h3>
