@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom';
 import './position.scss';
+import { FaArrowCircleDown, FaArrowCircleUp } from "react-icons/fa";
 
 export class Position extends Component {
     render() {
@@ -21,6 +22,12 @@ export class Position extends Component {
                     <div className="position-info">Value: {currentValue}$</div>
                     <div className="position-info">Profit: {profit.toFixed(2)}$</div>
                     <div className="position-info">Quantity: {position.qty}</div>
+                </div>
+                <div className="position-row position-row-arrow">
+                    {(profit.toFixed(2) > 0) &&
+                    <div className="profit-up"><FaArrowCircleUp/></div>}
+                    {(profit.toFixed(2) < 0) &&
+                    <div className="profit-down"><FaArrowCircleDown/></div>}
                 </div>
             </div>
         )

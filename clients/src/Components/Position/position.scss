@@ -28,6 +28,22 @@
     }
 }
 
+.position-row-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .profit-up {
+        color: green;
+        font-size: 25px;
+    }
+
+    .profit-down {
+        color: red;
+        font-size: 25px;
+    }
+}
+
 .position-row-title {
     align-items: center;
     justify-content: center;

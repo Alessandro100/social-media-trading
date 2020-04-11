@@ -6,7 +6,7 @@ import EnvironmentVariables from '../../Constants/EnvironmentVariables';
 import './entrance-flow.scss';
 import Header from '../Header';
 import Button from '@material-ui/core/Button';
-import Image from '../../https___www.lifeofpix.com_wp-content_uploads_2018_05_308-name5545-nam.jpg';
+import HeaderImage from '../../Logos/stock-business-header.jpg';
 import Alpaca from '../../Logos/alpaca.jpg'
 
 class Login extends Component {
@@ -86,7 +86,7 @@ class Login extends Component {
             <div>
                 <Header />
                 <div className="login-body">
-                    <img className="login-header-image" src={Image}></img>
+                    <img className="login-header-image" src={HeaderImage}></img>
                     <h1>Welcome</h1>
                     <div className="login-subtitle">Learn to Invest, Track your Progress, and Build Community.</div>
                     <div className="login-holder">
