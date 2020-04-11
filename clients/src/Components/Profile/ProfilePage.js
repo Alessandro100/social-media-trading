@@ -12,6 +12,8 @@ import Sectors from '../sectors';
 import './profile.scss';
 import LeaderboardWidget from '../Leaderboard/LeaderboardWidget';
 import Button from '@material-ui/core/Button';
+import Position from '../Position/Position.js';
+import '../Position/position.scss';
 
 export class ProfilePage extends Component {
 
@@ -30,6 +32,7 @@ export class ProfilePage extends Component {
         this.loadTransactions();
         this.loadPositions();
         this.loadFollowers();
+        this.toggleFollowPosition = this.toggleFollowPosition.bind(this);
     }
 
     loadUserInfo() {
@@ -81,17 +84,23 @@ export class ProfilePage extends Component {
         return (
             <>
             <Header />
+                {userInfo && <ProfileHeader 
+                                userInfo={userInfo}
+                                username={username}
+                                userServiceName={UserService.username}
+                                loadedFollowers={loadedFollowers}
+                                isFollowing={isFollowing}
+                                toggleFollowPosition={this.toggleFollowPosition} />}
                 <div className='page-container'>
                     <div className='page-main'>
-                        {userInfo && <ProfileHeader userInfo={userInfo} />}
-                        {username !== UserService.username && loadedFollowers && (
-                            <Button variant="contained" color={isFollowing ? "default" : "primary"} onClick={()=>this.toggleFollowPosition()}>
-                                {isFollowing ? 'Unfollow' : 'Follow'}
-                            </Button>
-                        )}
                         <Graph 
                             username={ this.props.username } />
-                        {positions && <Positions positions={positions} />}
+                        <div>
+                            <h3>Positions</h3>
+                            {positions && positions.map(position => (
+                            <Position key={position.id} position={position} />
+                            ))}
+                        </div>
                     </div>
                     <div className='page-sidebar'>
                         <h3>Investments</h3>

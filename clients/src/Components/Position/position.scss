@@ -2,10 +2,38 @@
     border-radius: 5px;
     background: white;
     box-shadow: 0px 1px 1px 1px rgba(0,0,0, 0.2);
+    display: inline-flex;
+}
+
+.box-position {
+    margin: 20px;
 }
 
 .position-row {
-    display: flex;
     justify-content: space-between;
     color: black;
+    display: flex;
+    flex-direction: column;
+
+    .position-info {
+        padding: 0 10px 0 10px;
+        text-align: left;
+    }
+
+    .position-title {
+        font-weight: bolder;
+        text-decoration: none;
+        color: black;
+        display: inline-flex;
+    }
+}
+
+.position-row-title {
+    align-items: center;
+    justify-content: center;
+
+    a {
+        text-decoration: none;
+        color: black;
+    }
 }

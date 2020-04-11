@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import './profile.scss'
+import Button from '@material-ui/core/Button';
 
 export class ProfileHeader extends Component {
     render() {
@@ -14,10 +15,16 @@ export class ProfileHeader extends Component {
             <>
                 <div className='img-container'>
                     <img className='profile-background' src={bgImg} />
-                    <img className='profile-user' src={img} />
-
                 </div>
-                <h1>{userInfo.username}</h1>
+                <div className="profile-header-bar">
+                    <img className='profile-user-thumbnail' src={img} />
+                    <h1>{userInfo.username}</h1>
+                    {this.props.username !== this.props.userServiceName && this.props.loadedFollowers && (
+                            <Button variant="contained" color={this.props.isFollowing ? "default" : "primary"} onClick={()=>this.props.toggleFollowPosition()}>
+                                {this.props.isFollowing ? 'Unfollow' : 'Follow'}
+                            </Button>
+                        )}
+                </div>
             </>
         )
     }

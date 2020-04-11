@@ -54,7 +54,6 @@ export class Graph extends Component {
                 var thisDate = new Date(userTimeline.timestamp[i]*1000)
                 times.push(moment(thisDate).format("MMM Do YYYY"))
             }
-            console.log(times)
             this.setState({
                 options: {
                     chart: {
