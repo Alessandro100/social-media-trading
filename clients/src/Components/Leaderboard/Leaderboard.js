@@ -51,7 +51,6 @@ export class Leaderboard extends Component {
                 <Header />
                 <div className="leaderboard-title-holder">
                     <h3>Leaderboard</h3>
-                    <p>See How You Rank!</p>
                 </div>
                 <div className="leaderboard-box-holder">
                 {users.map((user, index) =>(
