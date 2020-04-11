@@ -11,4 +11,4 @@ const EnvironmentVariablesDevelopment = {
     ALPACA_CLIENT_ID: '606c58263dae63dd827a2b1395f76150'
 }
 
-export default EnvironmentVariablesDevelopment;
+export default EnvironmentVariablesProduction;

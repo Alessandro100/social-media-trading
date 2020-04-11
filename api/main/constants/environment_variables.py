@@ -10,5 +10,5 @@ env_dev['ALPACA_REDIRECT'] = 'http://localhost:3000/login/'
 
 #switch the environment variables when doing a last commit before deploying on pythonanywhere
 def get_environment_variables():
-    #return env_prod
-    return env_dev
+    return env_prod
+    #return env_dev
