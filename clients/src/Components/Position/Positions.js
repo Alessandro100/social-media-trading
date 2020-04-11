@@ -15,9 +15,11 @@ export class Positions extends Component {
                         <p className="home-card-subtitle">No positions.</p>
                     </div>
                 )}
-                {positions && positions.map(position => (
-                    <Position key={position.id} position={position} />
-                ))}
+                <div className="feed-box">
+                    {positions && positions.map(position => (
+                        <Position key={position.id} position={position} />
+                    ))}
+                </div>
             </div>
         )
     }

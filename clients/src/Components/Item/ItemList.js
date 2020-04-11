@@ -13,7 +13,7 @@ export default class ItemList extends Component {
             <div className="home-card"> 
                 <h3>{headerTitle}</h3>
                 { (itemList && itemList.length !== 0 ) ? 
-                    <div>
+                    <div className="feed-box">
                         <div className="item-list-style hover">
                             {itemList.map((item) => (
                                 <Item key={item.id} item={item} />
