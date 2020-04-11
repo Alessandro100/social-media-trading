@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-import Modal from '@material-ui/core/Modal'
-import Button from '@material-ui/core/Button'
 import Timeline from '../Timeline'
 import ItemList from '../Item/ItemList'
 import Transaction from '../Transaction'
@@ -12,7 +10,7 @@ import UserService from '../../Services/user';
 import AlpacaService from '../../Services/alpaca';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import './home.scss';
-import { Card } from 'react-bootstrap'
+import AddFollowerModal from '../AddFollowerModal';
 
 export class HomePage extends Component {
 
@@ -29,8 +27,7 @@ export class HomePage extends Component {
         this.loadTransactions();
         this.loadPositions();
         this.loadFollowers();
-        this.closeAddFollower = this.closeAddFollower.bind(this);
-        this.viewAddFollower = this.viewAddFollower.bind(this);
+        this.toggleModal = this.toggleModal.bind(this);
     }
 
     loadTransactions() {
@@ -55,22 +52,18 @@ export class HomePage extends Component {
         })
     }
 
-    viewAddFollower = (object) => {
-        this.setState({
-            addFollowerMode: true
-        })
+    updateFollowers = (object) => {
+        this.loadFollowers();
     }
 
-    closeAddFollower = (object) => {
-        this.setState({
-            addFollowerMode: false
-        })
-        console.log(this.state.addFollowerMode)
+    toggleModal = (object) => {
+        const {addFollowerMode} = this.state;
+        this.setState({addFollowerMode: !addFollowerMode});
     }
 
     render() {
         // const { positions, followers } = this.props
-        const { transactions, positions, following, isLoadingFollowers, isLoadingTransactions, isLoadingPositions } = this.state;
+        const { transactions, positions, following, isLoadingFollowers, isLoadingTransactions, isLoadingPositions, addFollowerMode } = this.state;
         return (
             <div className="App">
                 <Header />
@@ -103,31 +96,14 @@ export class HomePage extends Component {
                         <ItemList 
                             itemList={following} 
                             headerTitle='Following' 
-                            viewAddFollower={this.viewAddFollower}/>
+                            viewAddFollower={this.toggleModal}/>
                     </div>
                     
-                    {/* Add Follower Modal */}
-
-                    <Modal
-                        open={this.state.addFollowerMode}
-                        onClose={this.closeAddFollower}>
-                        <div className="add-follower-modal">
-                            <div className="add-follower-title">
-                                <h2>User Search</h2>
-                            </div>
-                            <div className="add-follower-modal-body">
-                                <div className="follower-search-holder">
-                                <input type="search" className="follower-search"></input>
-                                <Button className="btn btn-primary follower-search-btn">
-                                    Search 
-                                    <i className="fas fa-search"></i>
-                                </Button>
-                                </div>
-                                <Button className="cancel-button" onClick={()=> this.closeAddFollower()}>Cancel</Button>
-                            </div>
-                        </div>
-                    </Modal>
-
+                    <AddFollowerModal 
+                        openModal={addFollowerMode} 
+                        usersFollowing={following} 
+                        toggleModal={this.toggleModal}
+                        updateFollowers={this.updateFollowers}/>
                 </div>
             </div>
         )

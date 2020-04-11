@@ -98,6 +98,16 @@ const UserService = {
         })
     },
 
+    getAllUsers: function() {
+        return new Promise((resolve, reject) =>{
+            APIService.get('user').then(users =>{
+                resolve(users['data']);
+            }, err =>{
+                reject(err);
+            })
+        })
+    },
+
     getUserFollowing: function() {
         return new Promise((resolve, reject) =>{
             APIService.get('follow', {username: UserService.username}).then(res =>{

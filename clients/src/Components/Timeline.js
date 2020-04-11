@@ -19,8 +19,6 @@ export class Timeline extends Component {
     render() {
         const {transactions} = this.props;
 
-        console.log("These are the transactions");
-        console.log(transactions);
         transactions.sort( this.compare );
         return (
             transactions.map(transaction => (

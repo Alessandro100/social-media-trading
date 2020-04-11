@@ -14,8 +14,13 @@ parser.add_argument('access_token')
 class User(Resource):
     def get(self):
         args = parser.parse_args()
-        user = UserNode.nodes.first(username=args['username'])
-        return neomodel_to_json(user), 201
+        if(args['username'] is not None):
+            user = UserNode.nodes.first(username=args['username'])
+            return neomodel_to_json(user), 201
+        else:
+            users = UserNode.nodes.all()
+            return neomodel_list_to_json(users)
+        
 
     def put(self):
         args = parser.parse_args()

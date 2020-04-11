@@ -85,7 +85,6 @@ class Login extends Component {
         const {access_token, errorMessage, homeNavigateion} = this.state;
         return (
             <div>
-                <Header />
                 <div className="login-body">
                     <img className="login-header-image" src={HeaderImage}></img>
                     <h1>Welcome</h1>
