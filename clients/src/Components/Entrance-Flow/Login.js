@@ -8,6 +8,7 @@ import Header from '../Header';
 import Button from '@material-ui/core/Button';
 import Image from '../../https___www.lifeofpix.com_wp-content_uploads_2018_05_308-name5545-nam.jpg';
 import Alpaca from '../../Logos/alpaca.jpg'
+import Logo from '../../Logos/navigatr-logo.png';
 
 class Login extends Component {
 
@@ -88,13 +89,13 @@ class Login extends Component {
                 <div className="login-body">
                     <img className="login-header-image" src={Image}></img>
                     <h1>Welcome</h1>
+                    <img className="login-alpaca" src={Logo}></img>
                     <div className="login-subtitle">Learn to Invest, Track your Progress, and Build Community.</div>
                     <div className="login-holder">
                         <div className="login-form">
                             <h3>Sign Up</h3>
                             <div className="login-form-holder">
-                                <img className="login-alpaca" src={Alpaca}></img>
-                                <div className="login-sub-subtitle">Don't Have an Account? <br/>Join the Alpaca Community for free here:</div>
+                                <div className="login-sub-subtitle">Don't Have an Account? <br/>Join the Navigatr Community for free here:</div>
                                 <Button className="btn btn-create-account" onClick={()=>this.logIntoAlpaca()}>Create Account</Button>
                             </div>
                         </div>
