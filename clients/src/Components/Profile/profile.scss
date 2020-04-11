@@ -12,16 +12,23 @@
 
 .profile-header-bar {
     display: inline-flex;
-    align-items: center;
-    margin-top: -60px;
+    align-items: end;
+    margin-top: -70px;
     padding-left: 50px;
+    font-size: 24px;
+    width: 100%;
+    position: relative;
 
     h1 {
-        margin-left: 20px;
+        margin: 5px 20px;
     }
 
     button {
         margin-left: 20px;
+        margin-top: 20px;
+        position: absolute;
+        top: 60px;
+        left: 155px;
     }
 }
 
@@ -33,20 +40,3 @@
 .user-follow {
     margin-left: 50px;
 }
-
-// .home-card{
-//     overflow: hidden;
-//     position: relative;
-//     height: 500px;
-//     text-align:center;
-// }
-
-// .feed-box{
-//     position: absolute;
-//     top: 0;
-//     bottom: 0;
-//     left: 0;
-//     right: -17px; /* Increase/Decrease this value for cross-browser compatibility */
-//     overflow-y: scroll;
-//     margin-top: 70px;
-// }

@@ -25,9 +25,11 @@ class LeaderboardWidget(Resource):
         info = {}
         args = parser.parse_args()
         user = UserNode.nodes.first(username=args['username'])
-        investor_scores = (user.investor_score for user in UserNode.nodes.filter(username__ne='null'))
+        investor_scores = (float(user.investor_score) for user in UserNode.nodes.filter(username__ne='null'))
         investor_scores = sorted(investor_scores, reverse = True)
+        print("HEY THIS IS THE LEADERBOARD WIDGET (sorted)")
+        print(investor_scores)
         info['investor_score'] = user.investor_score
-        info['rank'] = investor_scores.index(info['investor_score']) + 1
+        info['rank'] = investor_scores.index(float(info['investor_score'])) + 1
         info['percentile'] = (info['rank']  / len(investor_scores)) * 100
         return info, 201

@@ -107,7 +107,7 @@ export class ProfilePage extends Component {
                         {positions && cashPosition && <Sectors positions={positions.concat(cashPosition)}/>}
                         <h3>Leaderboard Rank</h3>
                         <LeaderboardWidget username={username}/>
-                        <div className="home-card">
+                        <div className="transaction-widget home-card">
                             <h3>Transactions</h3>
                             <div className="feed-box">
                                 {transactions && <Timeline transactions={transactions}/>}

@@ -21,6 +21,16 @@
     }
 }
 
+.transaction-widget {
+    &.home-card {
+        height: initial;
+    }
+
+    .feed-box {
+        height: 450px;
+    }
+}
+
 .home-card{
     overflow: hidden;
     position: relative;

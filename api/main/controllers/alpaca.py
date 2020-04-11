@@ -100,10 +100,8 @@ class AlpacaAccount(Resource):
 
 class AlpacaTimeline(Resource):
     def get(self):
-        print('GETTING TIMELINE')
         args = parser.parse_args()
         user = UserNode.nodes.first(username=args['username'])
-        print(user)
         if user.access_token is not None:
             URL = 'https://paper-api.alpaca.markets/v2/account/portfolio/history'
             PARAMS = {
@@ -111,7 +109,6 @@ class AlpacaTimeline(Resource):
             HEADERS = {'Authorization': 'Bearer ' + user.access_token}
             r = requests.get(url = URL, json = PARAMS, headers=HEADERS)
             data = r.json()
-            print(data)
             return data
         else:
             return {'error': 'Not Authorized'}, 403
