@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import UserService from '../../Services/user';
 import { Redirect } from "react-router-dom";
 import './entrance-flow.scss';
+import Button from '@material-ui/core/Button';
 
 class NewAccount extends Component {
 
@@ -56,20 +57,23 @@ class NewAccount extends Component {
     render() {
         const {navigate, showError} = this.state;
         return (
-            <div>
-                <h1>Create new Account Information</h1>
-                <form onSubmit={this.handleSubmit}>
-                    <h3>Enter a username {showError && <span>(Username is already taken)</span>}</h3>
-                    <input type="text" name="username" value={this.state.username} onChange={this.handleUsernameChange}></input>
-                    <h3>Enter a password</h3>
-                    <input type="password" name="password" value={this.state.password} onChange={this.handlePasswordChange}></input>
-                    <h3>Enter image URL</h3>
-                    <input type="text" name="img" value={this.state.img} onChange={this.handleImgChange}></input>
-                    <h3>Enter a background image URL</h3>
-                    <input type="text" name="url" value={this.state.bgImg} onChange={this.handleBgImgChange}></input>
-                    <input type="submit" value="Submit" />
-                </form>
-                {navigate && <Redirect to={"/"} push={true}/>}
+            <div className="login-body">
+                <div className="login-form">
+                    <h3>Create new Account Information</h3>
+                    <form onSubmit={this.handleSubmit}>
+                        <div className="login-sub-subtitle">Enter a username {showError && <span>(Username is already taken)</span>}</div>
+                        <input className="login-input login-color-ensure" type="text" name="username" value={this.state.username} onChange={this.handleUsernameChange}></input>
+                        <div className="login-sub-subtitle">Enter a password</div>
+                        <input className="login-input login-color-ensure" type="password" name="password" value={this.state.password} onChange={this.handlePasswordChange}></input>
+                        <div className="login-sub-subtitle">Enter image URL</div>
+                        <input className="login-input login-color-ensure" type="text" name="img" value={this.state.img} onChange={this.handleImgChange}></input>
+                        <div className="login-sub-subtitle">Enter a background image URL</div>
+                        <input className="login-input login-color-ensure" type="text" name="url" value={this.state.bgImg} onChange={this.handleBgImgChange}></input>
+                        <br/>
+                        <Button className="btn btn-login" type="submit" value="submit">Submit</Button>
+                    </form>
+                    {navigate && <Redirect to={"/"} push={true}/>}
+                </div>
             </div>
         )
     }
