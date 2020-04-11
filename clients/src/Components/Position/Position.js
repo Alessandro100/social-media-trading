@@ -11,16 +11,16 @@ export class Position extends Component {
         const profit = currentValue - initialCost;
 
         return (
-            <div className='box'>
-                <div className='position-row'>
-                    <div>
+            <div className='box box-position'>
+                <div className='position-row position-row-title'>
+                    <div className="position-title">
                         <Link to={"/stockinfo/"+position.symbol}>{position.symbol}</Link>
                     </div>
                 </div>
                 <div className='position-row'>
-                    <div>Value: {currentValue}$</div>
-                    <div>Profit: {profit.toFixed(2)}$</div>
-                    <div>Quantity: {position.qty}</div>
+                    <div className="position-info">Value: {currentValue}$</div>
+                    <div className="position-info">Profit: {profit.toFixed(2)}$</div>
+                    <div className="position-info">Quantity: {position.qty}</div>
                 </div>
             </div>
         )

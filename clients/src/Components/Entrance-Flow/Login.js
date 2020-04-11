@@ -4,6 +4,10 @@ import UserService from '../../Services/user';
 import { Redirect } from "react-router-dom";
 import EnvironmentVariables from '../../Constants/EnvironmentVariables';
 import './entrance-flow.scss';
+import Header from '../Header';
+import Button from '@material-ui/core/Button';
+import Image from '../../https___www.lifeofpix.com_wp-content_uploads_2018_05_308-name5545-nam.jpg';
+import Alpaca from '../../Logos/alpaca.jpg'
 
 class Login extends Component {
 
@@ -80,19 +84,37 @@ class Login extends Component {
         const {access_token, errorMessage, homeNavigateion} = this.state;
         return (
             <div>
-                <h1>Social Media Trading Platform</h1>
-                <button onClick={()=>this.logIntoAlpaca()}>Create Account</button>
-                <h3>Sign In</h3>
-                {errorMessage && <h3>{errorMessage}</h3>}
-                <form onSubmit={this.logInUsernamePassword}>
-                    <h3>Enter a username</h3>
-                    <input type="text" name="username" value={this.state.username} onChange={this.handleUsernameChange}></input>
-                    <h3>Enter a password</h3>
-                    <input type="password" name="password" value={this.state.password} onChange={this.handlePasswordChange}></input>
-                    <input type="submit" value="Submit" />
-                </form>
-                {access_token && <Redirect to={"/new-account/" + access_token} push={true}/>}
-                {homeNavigateion && <Redirect to={"/"} push={true}/>}
+                <Header />
+                <div className="login-body">
+                    <img className="login-header-image" src={Image}></img>
+                    <h1>Welcome</h1>
+                    <div className="login-subtitle">Learn to Invest, Track your Progress, and Build Community.</div>
+                    <div className="login-holder">
+                        <div className="login-form">
+                            <h3>Sign Up</h3>
+                            <div className="login-form-holder">
+                                <img className="login-alpaca" src={Alpaca}></img>
+                                <div className="login-sub-subtitle">Don't Have an Account? <br/>Join the Alpaca Community for free here:</div>
+                                <Button className="btn btn-create-account" onClick={()=>this.logIntoAlpaca()}>Create Account</Button>
+                            </div>
+                        </div>
+                        <div className="login-form">
+                            <h3>Sign In</h3>
+                            <div className="login-form-holder">
+                                {errorMessage && <h3>{errorMessage}</h3>}
+                                <form onSubmit={this.logInUsernamePassword}>
+                                    <div className="login-sub-subtitle">Enter a username:</div>
+                                    <input className="login-input" type="text" name="username" value={this.state.username} onChange={this.handleUsernameChange}></input>
+                                    <div className="login-sub-subtitle">Enter a password:</div>
+                                    <input className="login-input" type="password" name="password" value={this.state.password} onChange={this.handlePasswordChange}></input><br/>
+                                    <Button className="btn btn-login" type="submit" value="submit">Submit</Button>
+                                </form>
+                            </div>
+                            {access_token && <Redirect to={"/new-account/" + access_token} push={true}/>}
+                            {homeNavigateion && <Redirect to={"/"} push={true}/>}
+                        </div>
+                    </div>
+                </div>
             </div>
         )
     }

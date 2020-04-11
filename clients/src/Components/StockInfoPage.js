@@ -78,7 +78,8 @@ export class StockInfoPage extends Component {
                         <div>
                             Price(USD): {currentPrice}$ ({Number(percentChange).toFixed(2)}%)
                         </div>
-                        <StockInfoGraph />
+                        <StockInfoGraph 
+                            stockSymbol={this.props.stockSymbol}/>
                     </div>
                     <div className='page-sidebar'>
                         {/* probably should be a seperate componenet */}

@@ -45,6 +45,17 @@ const AlpacaService = {
                 reject(err);
             })
         })
+    },
+
+    getUserTimeline: function(username) {
+        return new Promise((resolve, reject) =>{
+            console.log('TIMELINE')
+            APIService.get('alpaca-timeline', {username: username}).then(res =>{
+                resolve(res['data']);
+            }, err =>{
+                reject(err);
+            })
+        })
     }
 };
 

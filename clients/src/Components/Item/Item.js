@@ -10,12 +10,12 @@ export default class Item extends Component {
         const img = item.img ? item.img : 'https://www.w3schools.com/w3images/avatar2.png';
 
         return (
-            <div className="item-style" >
-                <Link to={"/profile/"+item.username}>
-                    <img className="item-img" src={img} />
-                    {item.username}
-                </Link>
-            </div>
+            <Link to={"/profile/"+item.username}>
+                <div className="item-style" >
+                        <img className="item-img" src={img} />
+                        {item.username}
+                </div>
+            </Link>
         )
     }
 }

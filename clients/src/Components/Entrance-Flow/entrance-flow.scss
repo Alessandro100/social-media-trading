@@ -1,0 +1,91 @@
+.login-body {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width:100%;
+
+    .login-header-image {
+        width: 100%;
+        overflow:hidden;
+        height: 250px;
+    }
+
+    .login-subtitle {
+        color: silver;
+        font-size: 18px;
+        padding: 15px 0 20px 0;
+    }
+
+    .login-sub-subtitle {
+        color: silver;
+        font-size: 16px;
+    }
+
+    h1 {
+        text-transform: uppercase;
+        margin-bottom: 0px;
+        letter-spacing:2px;
+    }
+
+    h2 {
+        color: silver;
+    }
+
+    .login-holder {
+        display: inline-flex;
+        width: 100%;
+        justify-content: center;
+        height: 500px;
+    }
+
+    .btn-create-account {
+        background-color: gainsboro;
+        color: black;
+        margin-top: 20px;
+    }
+
+    .btn-login {
+        background-color: gainsboro;
+        color: black;
+    }
+
+    .login-form {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        border: 1px lightgrey solid;
+        border-radius: 15px;
+        padding: 30px;
+        padding-bottom: 50px;
+        margin: 20px;
+        width: 30%;
+        text-align: center;
+
+        .login-form-holder {
+            margin-top: 20px;
+        }
+
+        h3 {
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        form {
+            text-align: center;
+        }
+
+        .login-input {
+            border: 0;
+            padding: 10px;
+            border-radius: 5px;
+            margin-right: 15px;
+            margin: 10px 0 10px 0;
+        }
+
+        .login-alpaca {
+            width: 100px;
+            margin-bottom: 20px;
+        }
+    }
+}

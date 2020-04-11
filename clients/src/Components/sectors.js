@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PieChart from 'react-minimal-pie-chart';
+import './Profile/profile.scss'
 
 class Sectors extends Component {
   render() {
@@ -16,7 +17,7 @@ class Sectors extends Component {
     });
 
     return (
-      <div>
+      <div className="piechart-holder">
         <PieChart
           data={data}
           animate
