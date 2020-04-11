@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import LeaderboardService from '../../Services/leaderboard';
 import './leaderboard.scss'
 import UserService from '../../Services/user';
-import Spinner from 'react-bootstrap/Spinner'
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 export class Leaderboard extends Component {
 
@@ -12,17 +12,18 @@ export class Leaderboard extends Component {
         super();
 
         this.state = {
-            users: []
+            users: [],
+            isLoading: true
         }
 
         this.loadLeaderboard();
     }
 
     sortUsers( a, b ) {
-        if ( a.investor_score > b.investor_score ){
+        if ( Number(a.investor_score) > Number(b.investor_score) ){
           return -1;
         }
-        if ( a.investor_score < b.investor_score ){
+        if ( Number(a.investor_score) < Number(b.investor_score) ){
           return 1;
         }
         return 0;
@@ -30,8 +31,12 @@ export class Leaderboard extends Component {
 
     loadLeaderboard(){
         LeaderboardService.getAllLeaderBoard().then(users =>{
+            
+            users = users.filter(u => u.username != null)
             users.sort(this.sortUsers);
-            this.setState({users: users});
+            console.log("these are the users")
+            console.log(users);
+            this.setState({users: users, isLoading: false});
         })
     }
 
@@ -44,7 +49,7 @@ export class Leaderboard extends Component {
     }
 
     render() {
-        const {users} = this.state;
+        const {users, isLoading} = this.state;
 
         return(
             <>
@@ -52,6 +57,7 @@ export class Leaderboard extends Component {
                 <div className="leaderboard-title-holder">
                     <h3>Leaderboard</h3>
                 </div>
+                {isLoading && <CircularProgress className='leaderboard-spinner'/>}
                 <div className="leaderboard-box-holder">
                 {users.map((user, index) =>(
                     (user && user.username && (
@@ -60,7 +66,6 @@ export class Leaderboard extends Component {
                             <div className="leaderboard-bio-holder">
                                 <img className={user.img ? "leaderboard-img" : "leaderboard-alt-img"} src={ user.img ? user.img : 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/User_font_awesome.svg/768px-User_font_awesome.svg.png' } ></img>
                                 <div className="leaderboard-bio">
-                                    {console.log(user)}
                                     <Link to={'/profile/' + user.username}><h3>{user.username}</h3></Link>
                                     {Number(user.investor_score).toFixed(2)}
                                 </div>

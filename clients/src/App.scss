@@ -61,6 +61,12 @@
   border-radius: 5px;
 }
 
+.leaderboard-spinner{
+  position: absolute;
+  left: calc(50% - 20px);
+  margin-top: 20px;
+}
+
 .circle-holder {
   background-color:white;
   border-radius:50%;
