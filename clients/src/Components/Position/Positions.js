@@ -10,12 +10,12 @@ export class Positions extends Component {
         return (
             <div className="home-card">
                 <h3>Positions</h3>
-                {!positions && (
-                    <div className="empty-item-list">
-                        <p className="home-card-subtitle">No positions.</p>
-                    </div>
-                )}
                 <div className="feed-box">
+                    {!positions && (
+                        <div className="empty-item-list">
+                            <p className="home-card-subtitle">No positions.</p>
+                        </div>
+                    )}
                     {positions && positions.map(position => (
                         <Position key={position.id} position={position} />
                     ))}

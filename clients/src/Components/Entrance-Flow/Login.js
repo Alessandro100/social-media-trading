@@ -88,7 +88,6 @@ class Login extends Component {
             <div>
                 <div className="login-body">
                     <div className="login-header-image" style={{backgroundImage: `url(${OceanHeaderImage})`}}></div>
-                    <h1>Welcome</h1>
                     <img className="login-alpaca" src={Logo}></img>
                     <div className="login-subtitle">Learn to Invest, Track your Progress, and Build Community.</div>
                     <div className="login-holder">

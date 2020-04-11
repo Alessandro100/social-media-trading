@@ -70,9 +70,7 @@ export class HomePage extends Component {
                 <div className='App-Container'>
                     <div className='app-columns'>
                         {isLoadingPositions && <CircularProgress />}
-                        <Positions 
-                            positions={positions} 
-                        />
+                        <Positions positions={positions} />
                     </div>
                     <div className='app-columns'>
                         {isLoadingTransactions && <CircularProgress />}
